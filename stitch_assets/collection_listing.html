@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"tertiary-fixed-dim":"#becabd","inverse-on-surface":"#f2f0ed","on-background":"#1b1c1a","surface-variant":"#e4e2de","on-surface":"#1b1c1a","on-primary-fixed":"#1c1b1a","on-tertiary-container":"#7b877b","on-secondary":"#ffffff","background":"#fbf9f5","secondary-fixed":"#fedeb2","surface-tint":"#605e5c","surface":"#fbf9f5","secondary-fixed-dim":"#e0c298","surface-bright":"#fbf9f5","on-surface-variant":"#4a4640","on-tertiary-fixed":"#141e16","surface-container":"#efeeea","outline-variant":"#ccc5bd","on-tertiary":"#ffffff","tertiary-fixed":"#dae6d8","surface-container-high":"#eae8e4","primary-fixed":"#e6e2df","on-tertiary-fixed-variant":"#3f4940","primary-fixed-dim":"#cac6c4","on-error-container":"#93000a","outline":"#7c766f","error":"#ba1a1a","inverse-primary":"#cac6c4","on-primary":"#ffffff","secondary-container":"#fedeb2","surface-container-highest":"#e4e2de","inverse-surface":"#30312e","surface-container-low":"#f5f3ef","tertiary":"#000000","on-primary-fixed-variant":"#484645","on-primary-container":"#868382","on-secondary-container":"#78603e","surface-dim":"#dbdad6","on-secondary-fixed":"#281800","error-container":"#ffdad6","surface-container-lowest":"#ffffff","tertiary-container":"#141e16","on-error":"#ffffff","secondary":"#725b38","primary-container":"#1c1b1a","primary":"#000000","on-secondary-fixed-variant":"#584323"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-4xl":"6rem","space-3xs":"0.125rem","max-width-content":"1440px","space-sm":"0.75rem","space-xs":"0.5rem","gutter-mobile":"1rem","space-lg":"1.5rem","space-2xs":"0.25rem","space-md":"1rem","space-3xl":"4rem","gutter-desktop":"2rem","space-xl":"2rem","space-2xl":"3rem"},"fontFamily":{"price-lg":["Playfair Display"],"price-md":["Playfair Display"],"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Playfair Display"],"body-md":["Plus Jakarta Sans"],"display-md":["Playfair Display"],"body-lg":["Plus Jakarta Sans"],"headline-md":["Playfair Display"],"headline-lg":["Playfair Display"],"display-md-mobile":["Playfair Display"],"headline-sm":["Playfair Display"],"label-caps":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"display-lg":["Playfair Display"]},"fontSize":{"price-lg":["22px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"500"}],"price-md":["16px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"display-md":["42px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"400"}],"display-md-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"14px","letterSpacing":"0.14em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><div class="fixed top-0 left-0 w-full z-50"><div class="h-9 bg-primary text-on-primary flex items-center justify-between px-gutter-mobile lg:px-gutter-desktop max-w-[1440px] mx-auto"><div class="hidden md:flex items-center gap-space-md"><span class="font-label-caps text-label-caps uppercase tracking-widest text-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[14px]">call</span> +92 42 111-TANABANA</span><span class="font-label-caps text-label-caps uppercase tracking-widest text-surface-variant flex items-center gap-space-2xs"><span class="material-symbols-outlined text-[14px]">pin_drop</span> Gulberg • Clifton</span></div><div class="flex-1 text-center font-label-caps text-label-caps tracking-widest uppercase truncate px-space-xs"><span class="text-on-primary">Complimentary Express Delivery on Orders &gt; Rs. 3,500</span><span class="text-surface-variant mx-space-xs hidden sm:inline">|</span><span class="text-surface-variant hidden sm:inline">COD Available Nationwide</span></div><div class="flex items-center gap-space-md font-label-caps text-label-caps uppercase tracking-wider"><a class="hidden lg:inline text-surface-variant hover:text-on-primary transition-colors" data-path="track-order" href="#">Track Order</a><div class="flex items-center gap-space-2xs bg-surface-container-highest/20 px-space-xs py-0.5 rounded-full"><span class="text-on-primary font-bold">PKR</span><span class="text-surface-variant">/</span><span class="text-surface-variant hover:text-on-primary cursor-pointer transition-colors">USD</span></div></div></div><header class="bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="home" href="#"><img alt="Tanabana Fabrics Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WfZwv74dxB566A9BMQh6bU_OG3esG-iNk6EDs4F8aY4YWfz71rGo5GtlejkzxGxMl0grkXIXPLZ9MTYyIE6va33_aimaaD0pXXoCGpYtYElFy7ov1j231zuhp2jPSEGIWhtU2yNhegDhAGlucpH9fzwezRvlvao2qEu4kmxLqP1WokttxTxvGJEYY6fIwzAb4s7IPhcmzJQYJ58smDQQIZMmD2NgVodBPl0WGmvk06oSNOsgsCbrx7SQ"/><span class="font-headline-sm text-headline-sm tracking-wide text-primary uppercase">Tanabana</span></a></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-bold"><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="home" href="#">Home</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="mens-unstitched" href="#">Men's Unstitched</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="womens-luxury" href="#">Women's Luxury</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="festive-lawn-silk" href="#">Festive Lawn &amp; Silk</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="heritage-shawls" href="#">Heritage Shawls</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest" data-path="collections" href="#">Collections</a><a class="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest text-secondary" data-path="sale" href="#">Sale</a></nav><div class="flex items-center gap-space-sm lg:gap-space-md"><button class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Search</span><span class="font-label-caps text-label-caps text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-outline">⌘K</span></button><a class="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-0 right-0 h-4 w-4 bg-primary text-on-primary font-label-caps text-[9px] flex items-center justify-center rounded-full">3</span></a><a class="flex items-center gap-space-xs p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="shopping-bag" href="#"><div class="relative"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-0 right-0 h-4 w-4 bg-primary text-on-primary font-label-caps text-[9px] flex items-center justify-center rounded-full">2</span></div><div class="hidden md:flex flex-col text-left leading-none"><span class="font-label-caps text-[10px] text-outline uppercase">Bag</span><span class="font-price-md text-price-md text-primary">Rs. 14,850</span></div></a><a class="flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface transition-colors pl-space-2xs" data-path="account" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header></div><main class="w-full pt-[116px] bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Editorial Page Title & Curatorial Subtext -->
+<section class="w-full bg-surface-container-lowest py-space-xl">
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<nav class="flex items-center gap-space-xs font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-space-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-outline">/</span>
+<a class="hover:text-primary transition-colors" href="#">Collections</a>
+<span class="text-outline">/</span>
+<span class="text-primary font-bold">Men's Unstitched Luxury</span>
+</nav>
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="space-y-space-xs max-w-3xl">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-secondary">Seasonal Masterpieces</span>
+</div>
+<h1 class="font-display-md text-display-md text-primary tracking-tight">
+            Men's Unstitched Heritage Collection
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+            From ceremonial Chinese Boski to crisp superfine Egyptian Latha and all-weather wash-and-wear, tailored to traditional 4.5-meter suit cuts. Hand-picked loom counts calibrated for the discerning Pakistani gentleman.
+          </p>
+</div>
+<div class="flex items-center gap-space-md pb-space-xs">
+<div class="text-right">
+<span class="font-label-caps text-label-caps uppercase text-outline block">Catalog Archive</span>
+<span class="font-headline-sm text-headline-sm text-primary">42 Fabrics</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">texture</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Controls Bar: Filter Pills, Search, View Switcher & Sorting -->
+<section class="sticky top-[116px] z-30 bg-surface/95 backdrop-blur-md shadow-sm py-space-sm">
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<!-- Active Filters Pill Stack -->
+<div class="flex items-center gap-space-xs flex-wrap w-full md:w-auto">
+<button class="lg:hidden flex items-center gap-space-xs px-space-md py-2 bg-primary text-on-primary rounded font-label-caps text-label-caps uppercase" id="mobile-filter-trigger">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filters (2)</span>
+</button>
+<span class="hidden lg:inline-block font-label-caps text-label-caps text-outline uppercase tracking-wider mr-space-2xs">Active:</span>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-caps text-label-caps uppercase tracking-wider group hover:bg-surface-variant cursor-pointer transition-colors">
+<span>Egyptian Cotton</span>
+<span class="material-symbols-outlined text-[13px] text-outline group-hover:text-primary">close</span>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-caps text-label-caps uppercase tracking-wider group hover:bg-surface-variant cursor-pointer transition-colors">
+<span>Under Rs. 10,000</span>
+<span class="material-symbols-outlined text-[13px] text-outline group-hover:text-primary">close</span>
+</div>
+<button class="font-label-caps text-label-caps text-secondary underline hover:text-primary transition-colors tracking-widest uppercase pl-space-xs">
+          Clear All
+        </button>
+</div>
+<!-- Quick Search + Layout View Selector + Sort Trigger -->
+<div class="flex items-center gap-space-sm w-full md:w-auto justify-end">
+<div class="relative flex-1 sm:w-60">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline">search</span>
+<input class="w-full bg-surface-container-lowest pl-9 pr-3 py-1.5 font-body-sm text-body-sm text-on-surface rounded shadow-sm focus:outline-none focus:bg-surface-container-low transition-colors" placeholder="Search within cut or loom..." type="text"/>
+</div>
+<!-- Density Layout Switcher -->
+<div class="hidden sm:flex items-center bg-surface-container rounded p-0.5">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" title="Editorial 2-Column">
+<span class="material-symbols-outlined text-[20px]">view_agenda</span>
+</button>
+<button class="p-1 rounded bg-surface-container-lowest text-primary shadow-sm" title="4-Column Grid (Standard)">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors" title="List View">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+</div>
+<!-- Sort Dropdown Trigger -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest text-on-surface font-label-caps text-label-caps uppercase tracking-widest pl-3 pr-8 py-2 rounded shadow-sm cursor-pointer focus:outline-none hover:bg-surface-container-low transition-colors">
+<option>Sort: Featured Curations</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>New Weave Arrivals</option>
+<option>Loom Weight &amp; Rating</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[16px] pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Master Layout: 12-Column Architectural System -->
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Faceted Filters (Desktop Sticky Sidebar) -->
+<aside class="hidden lg:block lg:col-span-3 space-y-space-lg sticky top-[188px] pr-space-xs">
+<!-- Category & Gender Accordion -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Category Lineage</h2>
+<span class="material-symbols-outlined text-[18px] text-outline">expand_less</span>
+</div>
+<div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span class="text-primary font-bold">Men's Unstitched</span>
+</span>
+<span class="font-label-caps text-[10px] text-outline bg-surface-container px-2 py-0.5 rounded">28</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Women's Formal Luxury</span>
+</span>
+<span class="font-label-caps text-[10px] text-outline bg-surface-container px-2 py-0.5 rounded">34</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Heritage Handwoven Shawls</span>
+</span>
+<span class="font-label-caps text-[10px] text-outline bg-surface-container px-2 py-0.5 rounded">16</span>
+</label>
+</div>
+</div>
+<!-- Fabric Material -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Fabric &amp; Loom Weave</h2>
+<span class="material-symbols-outlined text-[18px] text-outline">expand_less</span>
+</div>
+<div class="space-y-space-xs pt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Pure Chinese Boski (10 Lb)</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">06</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Egyptian Combed Cotton</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">11</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Giza Mercerized Latha</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">08</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Tropical Wash &amp; Wear</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">14</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Handspun Organic Khaddar</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">05</span>
+</label>
+<label class="flex items-center justify-between cursor-pointer group hover:text-on-surface">
+<span class="flex items-center gap-space-xs">
+<input class="w-4 h-4 accent-primary rounded-none" type="checkbox"/>
+<span>Raw Silk-Wool Karandi</span>
+</span>
+<span class="text-outline text-label-caps font-label-caps text-[10px]">04</span>
+</label>
+</div>
+</div>
+<!-- Standard Cut & Yardage Selection -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Suit Length &amp; Cut</h2>
+<span class="material-symbols-outlined text-[18px] text-outline">expand_less</span>
+</div>
+<div class="grid grid-cols-1 gap-space-xs pt-space-xs">
+<div class="p-space-xs rounded bg-surface-container-lowest shadow-sm flex items-center justify-between cursor-pointer hover:bg-surface-container transition-colors">
+<div>
+<span class="font-label-md text-label-md text-primary block">4.5 Meters Suit Length</span>
+<span class="font-body-sm text-[11px] text-outline">Standard Kurta &amp; Shalwar (Full Ghera)</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<div>
+<span class="font-label-md text-label-md text-on-surface block">7.0 Meters Double Suit Cut</span>
+<span class="font-body-sm text-[11px] text-outline">Two Matching Suits / Over-Tall Cuts</span>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container-lowest transition-colors">
+<div>
+<span class="font-label-md text-label-md text-on-surface block">2.5 Meters Kurta Fabric</span>
+<span class="font-body-sm text-[11px] text-outline">Standalone Upper Kurta with Buttons</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Color Family Swatches -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Subtle Shade Spectrum</h2>
+<span class="material-symbols-outlined text-[18px] text-outline">palette</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Calibrated traditional hues for Friday prayers, corporate gatherings, and festive dawats.</p>
+<div class="flex flex-wrap gap-2.5 pt-space-xs">
+<button class="w-7 h-7 rounded-full bg-[#FFFFFF] shadow-sm ring-2 ring-primary ring-offset-2 transition-transform hover:scale-110" title="Snow White"></button>
+<button class="w-7 h-7 rounded-full bg-[#F5F2EB] shadow-sm hover:scale-110 transition-transform" title="Raw Ivory"></button>
+<button class="w-7 h-7 rounded-full bg-[#EFE9DC] shadow-sm hover:scale-110 transition-transform" title="Royal Cream"></button>
+<button class="w-7 h-7 rounded-full bg-[#DFD5C6] shadow-sm hover:scale-110 transition-transform" title="Almond Beige"></button>
+<button class="w-7 h-7 rounded-full bg-[#949699] shadow-sm hover:scale-110 transition-transform" title="Slate Grey"></button>
+<button class="w-7 h-7 rounded-full bg-[#181716] shadow-sm hover:scale-110 transition-transform" title="Jet Black"></button>
+<button class="w-7 h-7 rounded-full bg-[#1C2738] shadow-sm hover:scale-110 transition-transform" title="Midnight Navy"></button>
+<button class="w-7 h-7 rounded-full bg-[#4E5646] shadow-sm hover:scale-110 transition-transform" title="Subdued Olive"></button>
+<button class="w-7 h-7 rounded-full bg-[#725B38] shadow-sm hover:scale-110 transition-transform" title="Royal Bronze"></button>
+</div>
+</div>
+<!-- Price Range Slider & Quick Bands -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Investment Bracket</h2>
+<span class="material-symbols-outlined text-[18px] text-outline">payments</span>
+</div>
+<div class="pt-space-xs space-y-space-xs">
+<div class="flex justify-between font-price-md text-price-md text-primary">
+<span>Rs. 3,000</span>
+<span>Rs. 25,000</span>
+</div>
+<input class="w-full accent-primary h-1.5 bg-surface-container-high rounded cursor-pointer" max="25000" min="3000" type="range" value="10000"/>
+<div class="flex flex-wrap gap-space-2xs pt-space-xs">
+<button class="px-space-xs py-1 rounded bg-surface-container text-[11px] font-label-caps uppercase tracking-wider text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors">&lt; Rs. 5k</button>
+<button class="px-space-xs py-1 rounded bg-primary text-on-primary text-[11px] font-label-caps uppercase tracking-wider">Rs. 5k–10k</button>
+<button class="px-space-xs py-1 rounded bg-surface-container text-[11px] font-label-caps uppercase tracking-wider text-on-surface-variant hover:bg-primary hover:text-on-primary transition-colors">&gt; Rs. 10k</button>
+</div>
+</div>
+</div>
+<!-- Seasonal Drape & Occasion -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-sm">
+<h2 class="font-label-caps text-label-caps uppercase text-primary tracking-widest font-bold">Occasion / Season</h2>
+<div class="space-y-space-2xs font-body-sm text-body-sm text-on-surface-variant">
+<label class="flex items-center gap-space-xs cursor-pointer hover:text-primary">
+<input checked="" class="accent-primary" type="checkbox"/>
+<span>Summer Lawn &amp; Supima Cotton</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer hover:text-primary">
+<input class="accent-primary" type="checkbox"/>
+<span>Friday Juma &amp; Daily Masjid</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer hover:text-primary">
+<input class="accent-primary" type="checkbox"/>
+<span>Ceremonial Nikah &amp; Groomswear</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer hover:text-primary">
+<input class="accent-primary" type="checkbox"/>
+<span>Winter Heavy Khaddar &amp; Wool</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- RIGHT COLUMN: Product Grid (4-Column Layout on Desktop) -->
+<main class="lg:col-span-9 flex flex-col space-y-space-xl">
+<!-- Live Weave Alert Banner -->
+<div class="w-full bg-surface-container p-space-md rounded-lg flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">The Tanabana Purity Certificate</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Each unstitched cut arrives enclosed in luxury presentation boxes with brand-engraved mother-of-pearl buttons and woven heirloom labels.</p>
+</div>
+</div>
+<span class="font-label-caps text-[10px] uppercase tracking-widest text-outline whitespace-nowrap">Authentic Lahore Dispatch</span>
+</div>
+<!-- 8 Bespoke Fabric Product Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- PRODUCT 1: Qaisar Royal Boski -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Luxurious Chinese 10-pound Boski unstitched suit fabric in natural rich ivory silk with fine flowing drapes, captured under museum-quality directional lighting against a warm minimalist Pakistani textile studio backdrop, exhibiting rich sheen and weave integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKlap5M7BpXm0grfOp4b8KuThxUasH5VGwgpBOFBGhJ4ErGCNqT0QW-LO-GeYTEKbjljzjrdLR4SJpgya6ManEH8iUH-QjrSYVY3JUvs8gnZZjqm_wIyHxYVDqvsbnhhyUX3gTh86Hp4RMZZskQaGi1ygjEHryxtqS9Y4fl5Cf5X5DouFcz9h6PJgCmUf9Splg8ok1505mznaOO3RYBmKz5uV9smQjceMOJsqwEt3zCxKM0vD7n67L"/>
+<div class="absolute top-2.5 left-2.5 flex flex-col gap-1">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Pure Boski Silk
+                </span>
+<span class="bg-secondary text-on-secondary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  10-Pound Grade
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • Pure Silk</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.9</span>
+<span class="text-outline text-[10px] ml-0.5">(38)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Qaisar Royal Boski
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Pure spun Chinese mulberry silk, heavy fall with fluid fluidity, signature 10-pound yard weight. Includes engraved horn buttons.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#F5F2EB] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#EFE9DC] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">2 Silken Tones</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 14,800</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded uppercase">In Stock</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 2: Shah Jahan Supima Cotton -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial portrait close-up of Shah Jahan Egyptian Supima Cotton fabric draped neatly, showing distinct micro-twill luster in almond beige, captured in an upscale South Asian high-fashion atelier with subtle shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7tfMk0TtP07VbgehMikgppC1KK5FEDSdJTfNuUHE8BrPC4NiTw6Slzr2fEF4ki9BRz7Xx00Deh-Sls52OMHNLn1GKX6yMyRXKrqXjTolQvvZmoR1VVw6dLjbkveluw2PVe35tFRz2GjpG3290gPeyEBfLM5UM_32UxbvvHd-nxk1mxj6NsETRJjWY3PhhYrhLuSPYo37ema0YONJytGvSERSRcYX0WXKj6XEHsR6KlAQMZ2x1I9d"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Supima 100/2
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • 100% Cotton</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.8</span>
+<span class="text-outline text-[10px] ml-0.5">(52)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Shah Jahan Supima
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Ultra-soft double-mercerized 100/2 Egyptian combed cotton. High air permeability tailored specifically for peak Pakistani summers.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#DFD5C6] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] shadow-sm"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#949699] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">+4 Shades</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 7,200</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-secondary-container bg-on-secondary-fixed-variant/10 px-1.5 py-0.5 rounded uppercase">Best Seller</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 3: Sultan Wash & Wear Wrinkle-Resistant -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial visual of Sultan Wash &amp; Wear deep navy blue suiting unstitched fabric folded with crisp architectural precision, showing matte sheen and clean drape with metallic fabric label on ivory linen background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWJCGLFGsWUlN1xnvxGqa__bG0-v_z-BP3wRtHLBzEDa85Bnj7ORrDmAtmtU6aqn8XZpAwal-gHXcK7O9KXUzur-TGwaxZhyQvJ6_8Sw5RsWr00vyHOEOGAKlDh2MvGtB7SL0yRUE_u145-m4C-VTi3jKbB6LLf8BnORSOKESy2FgtHJsoUCZX5Lxm2UV5vb2shi_cclp9QGF0Z866B4htr3PQHrGnM7kr7pkHXV0zFk1JBK-11hHc"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Wrinkle-Free
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • Micro-Viscose</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.7</span>
+<span class="text-outline text-[10px] ml-0.5">(89)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Sultan Poly-Viscose
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Microfiber tropical poly-viscose blend. Remarkable natural fall and drape engineered for effortless everyday office or executive commute.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#1C2738] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#181716] shadow-sm"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#4E5646] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">+6 Colors</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 4,500</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded uppercase">In Stock</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 4: Rawalpindi Handspun Khaddar -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Macro studio photograph of authentic Rawalpindi Handspun Khaddar unstitched fabric in deep earthy bronze and charcoal, displaying coarse organic slub texture with artisanal wooden loom shuttle in the blurred foreground." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChOmZR7SuoawGMSPXO-Qfxwl_LYckvQAArUrVNSpGQhEDhyJtThRhy9P4jL9b1FAudKmlml1dBkj2Y_f1i-YeSrOWVsqG2y_5UnhyO6zl3vP4sqSoi3SjS1rmeQI75VSNZAqSL3AHj4OVhzW9yuUADxvVTKJQe8t8RjFd87OEdJvBIgx3xGJKb6jySsIV5XLdftbqNRIbubPRBya1nrrdHRP_URYBtdEDEz6e7QmOvX-3gEAOnpmW4"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Hand-Loomed
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • Desi Cotton</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">5.0</span>
+<span class="text-outline text-[10px] ml-0.5">(21)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Rawalpindi Khaddar
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Organic desi hand-spun winter cotton. Tactile slub weave delivering heavy thermal weight and rugged, regal Pakistani heritage.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#725B38] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#181716] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">2 Earthy Hues</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 5,400</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-secondary bg-secondary-fixed/50 px-1.5 py-0.5 rounded uppercase">Heritage Craft</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 5: Multani Embroidered Kurta Fabric -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Exquisite Multani shadow-work hand embroidered kurta unstitched cut in cream premium lawn, showcasing intricate needlework along the collar placket with mother-of-pearl buttons placed artistically nearby in high-key natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDujGxVDUGwwTpG8-R2aFObIHF-EZSnAMjMM4mhRTs7Ji9eEI5lBjsvUwB-EMJyMANVi-oUie65jHRF3fcjP2UFEXTG7VnGZUdXZG1A50DcDk8z5pUfc01s_QoVsKYKhUe1d8FBEr7fAVXG2EwJhb5V1g4bP5ncNAEDOgNuPu5BdVRn8oBXT6sZqIY-m28qZquoHDPwWZclVox8JLL30cgFDu1p08vNxYab-LW-Vl5i0_QDptvEhVs0"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Artisanal Kurta
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 2.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">2.5 Meters • Lawn Kurta</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.9</span>
+<span class="text-outline text-[10px] ml-0.5">(17)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Multani Shadow Kurta
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Fine geometric threadwork and shadow embroidery on 80s combed lawn. Designed specifically for festive Juma or Eid festivities.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#EFE9DC] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">Ivory &amp; Pearl White</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 3,950</span>
+<span class="font-body-sm text-[11px] text-outline block">2.5m Kurta Cut</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded uppercase">Fast Dispatch</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 6: Peshawari Suiting Latha -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial photograph of crisp pure white Peshawari Latha cotton fabric exhibiting structured starchy folds, placed beside an authentic handmade brown leather Peshawari chappal on an antique Pakistani wooden floor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABsjPpnYqJ8zM3tPLel2wP1NoEbMGZ-DZ1WqRDQhVQ4rV2GpjKRvDMcZp4M0RyqxNuYAXgT3HOM74RBPBkUsCHVs6tt3P6PbKgG_jsoo8H7-C0BOJ7wSp4zuteDT8wdS0Q8wESvi4gY1H1t4lXiZFPkzL2Foyp-oc4QQ3oq6eihfwbi7Bm8mX9VHePiieESMigQuIDqj030VOpsWOWCMdYsQ1MJL_URN1z9pzdAiGDYKf505_2vdSP"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Traditional Latha
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • Crisp Finish</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.8</span>
+<span class="text-outline text-[10px] ml-0.5">(64)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Peshawari Suiting Latha
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Authentic hard-finish starch cotton. Delivers razor-sharp creases and the iconic flared Shalwar drape beloved in KPK and Punjab.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#F5F2EB] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">Snow White &amp; Ivory</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 4,800</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded uppercase">In Stock</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 7: Dara Silk-Wool Blended Karandi -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Editorial look of Dara Silk-Wool Karandi fabric in warm olive green and burnt camel, showing distinctive two-tone cross-weave texture with soft winter warmth, styled with antique brass scissors and measurement tape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwnvVOBaurFNsipVVsIsi5M4IF_YLNjl5xLjCZj8WWstmd9x1nrIMrRmuysrt0kXorjz0Kuwtin_dsMkVRjtLgSj2w8wwhbvogSCjkL0OPHQVZpVL0vrO_hoX1zSL-RpcMRG6oCIGhuheeJ1j7xKb6JcHFAIY5lAWGDgLTj3EZ4_C7NpmrNLeROGEb8el9BHW1dKdV-zzczNFvNen1fYV9LMULtKUfkDgIBZ1Daj6sZNplX7-izUNp"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Silk-Wool Blend
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 4.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">4.5 Meters • Winter Silk Blend</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.9</span>
+<span class="text-outline text-[10px] ml-0.5">(28)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Dara Silk-Wool Karandi
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Rare cross-weave intertwining fine raw mulberry silk filaments with soft combed Merino wool. Luxurious thermal comfort with a gentle sheen.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#4E5646] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#725B38] shadow-sm"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#1C2738] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">+3 Tones</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 8,900</span>
+<span class="font-body-sm text-[11px] text-outline block">Full 4.5m Suit</span>
+</div>
+<span class="font-label-caps text-[10px] text-primary bg-primary-fixed-dim px-1.5 py-0.5 rounded uppercase">Archive</span>
+</div>
+</div>
+</div>
+</article>
+<!-- PRODUCT 8: Kashmiri Pashmina Blend Waistcoat -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+<div class="relative aspect-[3/4] w-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-alt="Draped fabric cut of Kashmiri Pashmina Blend Waistcoat material in rich walnut brown with subtle herringbone dobby texture, shot in atmospheric mood lighting highlighting the tactile micro-weave and fine hand-feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALyzVdM4N2wXOJh8N453MQWzkDSsC5t9WPQhvfhz3vEiUj0OpPhUMTg_yg6std6cQA9gg-Hjv3AKavQLt6JayHMG4_maj-w8cnCIF1_ValA5gZM5k7CbPEN_-jF5ruf_4Tf1bcgyC0xrGEMxq_IbBbwhkPrp0PirMKLK5Fqm1rvcJaPk2zwEtsFYpFMHQ1oBmqn28Pifu7y6YVhMsQlzOV0ckx8Fi0wW1qdKb376HY7rhHm9BhF3Yy"/>
+<div class="absolute top-2.5 left-2.5">
+<span class="bg-primary/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                  Waistcoat Cut 1.5m
+                </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface hover:text-error transition-colors flex items-center justify-center shadow-sm" title="Add to Wishlist">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-2.5 rounded font-label-caps text-label-caps uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md">
+<span class="material-symbols-outlined text-[16px]">keyboard_double_arrow_left</span>
+<span>Quick Add 1.5m</span>
+</button>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between space-y-space-sm">
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] uppercase tracking-wider text-outline">1.5 Meters • Dobby Weave</span>
+<div class="flex items-center text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-0.5">4.9</span>
+<span class="text-outline text-[10px] ml-0.5">(14)</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors line-clamp-1">
+                  Kashmiri Waistcoat
+                </h3>
+<p class="font-body-sm text-[12px] text-on-surface-variant line-clamp-2 leading-relaxed">
+                  Textured dobby structure in walnut brown. Intended to be paired over plain Boski or Latha suits for formal winter receptions.
+                </p>
+</div>
+<div class="pt-space-2xs space-y-space-2xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 rounded-full bg-[#584323] shadow-sm ring-1 ring-primary"></span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#181716] shadow-sm"></span>
+<span class="font-label-caps text-[10px] text-outline ml-1">Walnut &amp; Onyx</span>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-price-md text-price-md text-primary font-bold">Rs. 3,200</span>
+<span class="font-body-sm text-[11px] text-outline block">1.5m Waistcoat Cut</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded uppercase">In Stock</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Curatorial Editorial Breakout: Textile Guidance -->
+<div class="w-full bg-surface-container-high rounded-xl p-space-lg lg:p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="space-y-space-xs max-w-xl">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest font-bold">Bespoke Tailoring Concierge</span>
+<h3 class="font-headline-lg text-headline-lg text-primary">Need Bespoke Master Cutting &amp; Stitching?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Order your favorite unstitched cut today and elect for our master tailor service in Lahore or Karachi. Hand-finished collar canvas, mother-of-pearl buttons, and customized sleeve lengths delivered to your doorstep.
+            </p>
+<div class="pt-space-xs flex items-center gap-space-md">
+<a class="inline-flex items-center gap-space-2xs font-label-caps text-label-caps text-primary uppercase font-bold tracking-widest hover:text-secondary transition-colors underline" href="#">
+<span>Explore Tailoring Services</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<span class="text-outline">•</span>
+<a class="inline-flex items-center gap-space-2xs font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">straighten</span>
+<span>Fabric Meterage Calculator</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm w-full md:w-auto flex-shrink-0 text-center space-y-space-xs">
+<span class="material-symbols-outlined text-secondary text-[32px]">verified_user</span>
+<p class="font-label-md text-label-md text-primary font-bold">14-Day Loom Guarantee</p>
+<p class="font-body-sm text-[12px] text-outline max-w-[200px]">Full refund or exchange on uncut, unstitched fabric swatches.</p>
+</div>
+</div>
+<!-- Pagination & Live Counter Module -->
+<div class="w-full pt-space-md pb-space-lg flex flex-col items-center justify-center space-y-space-md">
+<!-- Progress Bar & Count -->
+<div class="w-full max-w-xs space-y-1.5 text-center">
+<div class="flex justify-between font-label-caps text-[11px] text-on-surface-variant uppercase tracking-widest">
+<span>Showing 8 of 42 Master Fabrics</span>
+<span class="text-primary font-bold">19%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 19%;"></div>
+</div>
+</div>
+<!-- Interactive Actions: Load More CTA -->
+<button class="px-space-xl py-3 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary rounded font-label-caps text-label-caps uppercase tracking-widest transition-all duration-200 shadow-sm flex items-center gap-space-xs">
+<span>Load More Unstitched Cuts</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<!-- Numbered Pagination -->
+<nav aria-label="Page navigation" class="flex items-center gap-space-2xs pt-space-xs">
+<button class="w-9 h-9 rounded flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm">1</button>
+<button class="w-9 h-9 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors">2</button>
+<button class="w-9 h-9 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors">3</button>
+<button class="w-9 h-9 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors">4</button>
+<button class="w-9 h-9 rounded flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</main>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low mt-space-4xl shadow-[0_-1px_0_rgba(0,0,0,0.02)]"><div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-space-3xl"><div class="lg:col-span-4 space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="Tanabana Fabrics Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WfZwv74dxB566A9BMQh6bU_OG3esG-iNk6EDs4F8aY4YWfz71rGo5GtlejkzxGxMl0grkXIXPLZ9MTYyIE6va33_aimaaD0pXXoCGpYtYElFy7ov1j231zuhp2jPSEGIWhtU2yNhegDhAGlucpH9fzwezRvlvao2qEu4kmxLqP1WokttxTxvGJEYY6fIwzAb4s7IPhcmzJQYJ58smDQQIZMmD2NgVodBPl0WGmvk06oSNOsgsCbrx7SQ"/><span class="font-headline-sm text-headline-sm tracking-wide text-primary uppercase">Tanabana</span></div><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-sm">Tanabana — The art of warp and weft. Crafting premier unstitched fabrics steeped in Punjab's loom heritage with contemporary sartorial precision.</p><div class="pt-space-xs space-y-space-2xs"><p class="font-label-caps text-label-caps uppercase text-outline">Crafted in Punjab, Pakistan</p><p class="font-body-sm text-body-sm text-on-surface-variant">Lahore • Karachi • Islamabad</p></div></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Customer Care</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="track-order" href="#">Track Order</a></li><li><a class="hover:text-primary transition-colors" data-path="shipping-policy" href="#">Shipping Policy</a></li><li><a class="hover:text-primary transition-colors" data-path="returns-exchanges" href="#">14-Day Exchange</a></li><li><a class="hover:text-primary transition-colors" data-path="fabric-care-guide" href="#">Fabric Care Guide</a></li><li><a class="hover:text-primary transition-colors" data-path="faqs" href="#">FAQs</a></li></ul></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Curated Catalog</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" data-path="mens-unstitched" href="#">Men's Cotton &amp; Boski</a></li><li><a class="hover:text-primary transition-colors" data-path="womens-luxury" href="#">Women's Chiffon &amp; Silk</a></li><li><a class="hover:text-primary transition-colors" data-path="festive-lawn-silk" href="#">Festive Velvet</a></li><li><a class="hover:text-primary transition-colors" data-path="collections" href="#">Wedding Unstitched</a></li><li><a class="hover:text-primary transition-colors" data-path="heritage-shawls" href="#">Pure Pashmina Shawls</a></li></ul></div><div class="lg:col-span-4 space-y-space-md"><h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">Join the Tanabana Guild</h3><p class="font-body-sm text-body-sm text-on-surface-variant">Receive invitations to private fabric unveilings &amp; seasonal drops across Pakistan and worldwide.</p><form class="space-y-space-xs"><div class="flex"><input class="w-full px-space-md py- space-sm bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none" placeholder="Enter your email address" type="email"/><button class="px-space-lg py-space-sm bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest hover:bg-surface-tint transition-colors" type="button">Subscribe</button></div><p class="font-label-caps text-[10px] text-outline uppercase">Privacy respected. Unsubscribe anytime.</p></form></div></div><div class="pt-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Tanabana Fabrics Pvt. Ltd. All rights reserved. Flagships: Gulberg Lahore • Clifton Karachi.</div><div class="flex flex-wrap items-center gap-space-xs font-label-caps text-[10px] tracking-wider text-outline uppercase"><span class="px-2 py-1 bg-surface-container-highest/40 rounded">Cash on Delivery</span><span class="px-2 py-1 bg-surface-container-highest/40 rounded">JazzCash</span><span class="px-2 py-1 bg-surface-container-highest/40 rounded">EasyPaisa</span><span class="px-2 py-1 bg-surface-container-highest/40 rounded">Visa</span><span class="px-2 py-1 bg-surface-container-highest/40 rounded">Mastercard</span><span class="px-2 py-1 bg-surface-container-highest/40 rounded">PayPak</span></div></div></div></footer></body></html>

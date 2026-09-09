@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tanabana Fabrics • Luxury Pakistani Unstitched Textiles (Stitch Project #5671272351440654145)</title>
+  
+  <!-- Fonts & Material Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#000000",
+            "on-primary": "#ffffff",
+            "primary-container": "#1c1b1a",
+            "on-primary-container": "#868382",
+            "secondary": "#725b38",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fedeb2",
+            "secondary-fixed": "#fedeb2",
+            "tertiary": "#000000",
+            "background": "#fbf9f5",
+            "on-background": "#1b1c1a",
+            "surface": "#fbf9f5",
+            "on-surface": "#1b1c1a",
+            "surface-variant": "#e4e2de",
+            "on-surface-variant": "#4a4640",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f5f3ef",
+            "surface-container": "#efeeea",
+            "surface-container-high": "#eae8e4",
+            "surface-container-highest": "#e4e2de",
+            "outline": "#7c766f",
+            "outline-variant": "#ccc5bd"
+          },
+          spacing: {
+            "space-3xs": "0.125rem",
+            "space-2xs": "0.25rem",
+            "space-xs": "0.5rem",
+            "space-sm": "0.75rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-3xl": "4rem",
+            "space-4xl": "6rem",
+            "gutter-mobile": "1rem",
+            "gutter-desktop": "2rem"
+          },
+          fontFamily: {
+            "display-lg": ["'Playfair Display'", "serif"],
+            "display-md": ["'Playfair Display'", "serif"],
+            "headline-lg": ["'Playfair Display'", "serif"],
+            "headline-md": ["'Playfair Display'", "serif"],
+            "headline-sm": ["'Playfair Display'", "serif"],
+            "price-lg": ["'Playfair Display'", "serif"],
+            "price-md": ["'Playfair Display'", "serif"],
+            "body-lg": ["'Plus Jakarta Sans'", "sans-serif"],
+            "body-md": ["'Plus Jakarta Sans'", "sans-serif"],
+            "body-sm": ["'Plus Jakarta Sans'", "sans-serif"],
+            "label-caps": ["'Plus Jakarta Sans'", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React & Babel CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    @layer base { html, body { margin:0; padding:0; background-color:#fbf9f5; } }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // Logo Component
+    function Logo({ className = "h-8 w-auto" }) {
+      return (
+        <svg className={className} viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(10, 8)">
+            <path d="M22 2 L42 22 L22 42 L2 22 Z" stroke="#181716" strokeWidth="1.5" fill="none"/>
+            <path d="M22 8 L36 22 L22 36 L8 22 Z" stroke="#C5A880" strokeWidth="1.2" fill="none"/>
+            <circle cx="22" cy="22" r="3.5" fill="#181716"/>
+            <line x1="22" y1="2" x2="22" y2="42" stroke="#181716" strokeWidth="0.75" strokeDasharray="2 2"/>
+            <line x1="2" y1="22" x2="42" y2="22" stroke="#181716" strokeWidth="0.75" strokeDasharray="2 2"/>
+          </g>
+          <text x="64" y="32" fontFamily="'Playfair Display', serif" fontSize="21" fontWeight="600" letterSpacing="0.18em" fill="#181716">TANABANA</text>
+          <text x="65" y="45" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="8.5" fontWeight="500" letterSpacing="0.32em" fill="#8C827A">FABRICS • LAHORE</text>
+        </svg>
+      );
+    }
+
+    // App Component
+    function App() {
+      const [currentView, setCurrentView] = useState('home'); // 'home' | 'collection' | 'pdp' | 'design-system'
+      const [currency, setCurrency] = useState('PKR');
+      const [isCartOpen, setIsCartOpen] = useState(false);
+      const [activeImageIndex, setActiveImageIndex] = useState(0);
+      const [selectedLength, setSelectedLength] = useState('4.5m');
+      const [includeHornButtons, setIncludeHornButtons] = useState(true);
+      const [toast, setToast] = useState(null);
+
+      const [cartItems, setCartItems] = useState([
+        {
+          id: 'pdp-boski',
+          title: 'Koh-i-Noor Royal Boski 10-Pound Unstitched Suit',
+          category: "MEN'S UNSTITCHED",
+          price: 14850,
+          quantity: 1,
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmhpUZ5GJ3bNCO-67FTswqbMIsYYYwFmemtr_psiQ9xoubda9R2lnKy8mvVijFlzgFu17g2wbHix6xe83CKlCw88gi1a58uGGCd_aTttWkrv-uZ40camFc5H6WA5G3KUFy5KoQz7ipxrn9GJNrhl6NsuScb68PqX18n2MhDMO5Cd9Y1sxTTannS5h8nXGMC8kJVKkjU6mVLqU8uyFsC1CvsnaTXZljmVykxApvSKJlwCaT7-CUb0y0',
+          options: '4.5m Cut + Horn Buttons'
+        }
+      ]);
+
+      const triggerToast = (msg) => {
+        setToast(msg);
+        setTimeout(() => setToast(null), 3000);
+      };
+
+      const addToCart = (product) => {
+        setCartItems(prev => [...prev, { ...product, quantity: 1 }]);
+        triggerToast(`Added "${product.title}" to Bag`);
+        setIsCartOpen(true);
+      };
+
+      const cartTotal = cartItems.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+      const cartCount = cartItems.reduce((acc, i) => acc + i.quantity, 0);
+
+      const pdpGallery = [
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuAmhpUZ5GJ3bNCO-67FTswqbMIsYYYwFmemtr_psiQ9xoubda9R2lnKy8mvVijFlzgFu17g2wbHix6xe83CKlCw88gi1a58uGGCd_aTttWkrv-uZ40camFc5H6WA5G3KUFy5KoQz7ipxrn9GJNrhl6NsuScb68PqX18n2MhDMO5Cd9Y1sxTTannS5h8nXGMC8kJVKkjU6mVLqU8uyFsC1CvsnaTXZljmVykxApvSKJlwCaT7-CUb0y0',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBHYXgG6C7hfWMHorrrilBMqqA8o4JPmtFTF6pFmm39sR0qaMHxc83skaC3oNfLMy3Y7oella_Hq6PV6CTDi3aL3JU5huCFi9s8-EYCG5sjgD7hcoK8-3OEuucu9W57POxRBjHG0r8quo0gJ-HUpLAzNJM8fB-u_IuTK6l3DxIzMfGPEiqX3t_-HECSvHI8fLDirCLhj8mE_uvc5c_DfCXah1GZU7btVratzJ54TNlGdJxXMQXW3ehc',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCKMz7Xh1r0Eg31Iuk6FDhNOJ6TGn0BKzzq4IoZz9dvwfLxSCSOlKlhYZZs0VJUr8HfPCgFVV-iGsYy67ePrekEsA_HQvuuVxW19RUky-SLojQ5Dljpoa0llrZP1Owcv1j3Jq4Of6nBq65TeFGuuTgxg5vlgmFYWEkpFzb0RXjWPoA93uzS3l_VJ34CnAaQkQEkXGj_lQUWS8T4ZD_WyXNyBCH6O8gJiNVnIMLM3AHpo4G_UBe0EJRW',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuBc-UPLnNSEx8MjMGAuKKqA5DfHUpJi3AYzesDI6y5VEQlNBmd_hBk2uA25JIK500jkhd9dTpW7-gpNHI1QiYvK5h7XGSi1dIkMoCly1N-WDrDmg8soePhvhLqOoUyWgRy4nASrS6POGo5BEs0uM3FHJlqZN6RFjVQBubVnaNUCd9xW67aGc2GPjGM3Bfk8M_bipsrVCqNaVkfBKKdCBoRvmwDaft-Wc1HvSGZpe3UInRvz2JNfeLaR',
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuCtpDbSXYOre5PmSVI3sJsfcH9vEWiF6B6XB5_UzhsLSd33bdRkxKgrpL8c_htusioLSGYpnRnd7lHsz67RT5i1reLuRaBT_kAlnnhHygyb7qraipruumlk74Stffr8mIxJso1EBrCkdLuid2LkGKGpEUYgMLlwTPQtRztM2rgdOmjluaMvuvTvQHlWpy6SyovsqTXiL45v4r_3asJBBbGmouo0qWvmsAYAE00HFh7HNmizutZIjLYl'
+      ];
+
+      return (
+        <div className="min-h-screen flex flex-col">
+          {/* Top Stitch Control Header */}
+          <div className="fixed top-0 left-0 w-full z-50">
+            <div className="bg-[#181716] text-[#C5A880] text-xs py-1.5 px-4 flex items-center justify-between border-b border-[#333]">
+              <div className="flex items-center gap-2 font-label-caps uppercase tracking-wider text-[11px]">
+                <span className="bg-[#C5A880] text-[#181716] font-bold px-2 py-0.5 rounded text-[10px]">Stitch Screens</span>
+                <span className="hidden md:inline text-gray-400">Project ID: 5671272351440654145</span>
+              </div>
+              <div className="flex items-center gap-1 sm:gap-2 font-label-caps text-[11px] uppercase tracking-wider">
+                <button 
+                  onClick={() => setCurrentView('home')} 
+                  className={`px-2.5 py-1 rounded ${currentView === 'home' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
+                >
+                  1. Homepage
+                </button>
+                <button 
+                  onClick={() => setCurrentView('collection')} 
+                  className={`px-2.5 py-1 rounded ${currentView === 'collection' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
+                >
+                  2. Collection Listing
+                </button>
+                <button 
+                  onClick={() => setCurrentView('pdp')} 
+                  className={`px-2.5 py-1 rounded ${currentView === 'pdp' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
+                >
+                  3. Royal Boski PDP
+                </button>
+                <button 
+                  onClick={() => setCurrentView('design-system')} 
+                  className={`px-2.5 py-1 rounded ${currentView === 'design-system' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
+                >
+                  4. Design System
+                </button>
+              </div>
+            </div>
+
+            {/* Announcement bar */}
+            <div className="h-9 bg-primary text-on-primary flex items-center justify-between px-4 max-w-[1440px] mx-auto text-xs uppercase tracking-widest font-label-caps">
+              <div className="hidden md:flex items-center gap-4">
+                <span>+92 42 111-TANABANA</span>
+                <span>Gulberg • Clifton</span>
+              </div>
+              <div className="flex-1 text-center">
+                Complimentary Express Delivery on Orders &gt; Rs. 3,500
+              </div>
+              <div className="flex items-center gap-2">
+                <span onClick={() => setCurrency('PKR')} className={`cursor-pointer ${currency === 'PKR' ? 'font-bold text-white' : 'text-gray-400'}`}>PKR</span>
+                <span>/</span>
+                <span onClick={() => setCurrency('USD')} className={`cursor-pointer ${currency === 'USD' ? 'font-bold text-white' : 'text-gray-400'}`}>USD</span>
+              </div>
+            </div>
+
+            {/* Main Header */}
+            <header className="bg-surface/95 backdrop-blur-md shadow-sm border-b border-surface-container">
+              <div className="h-20 max-w-[1440px] mx-auto px-4 flex items-center justify-between">
+                <button onClick={() => setCurrentView('home')}>
+                  <Logo className="h-9 w-auto" />
+                </button>
+
+                <nav className="hidden xl:flex items-center gap-6 font-label-caps text-xs uppercase tracking-widest">
+                  <button onClick={() => setCurrentView('home')} className={currentView === 'home' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Home</button>
+                  <button onClick={() => setCurrentView('collection')} className={currentView === 'collection' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Men's Unstitched</button>
+                  <button onClick={() => setCurrentView('collection')} className="text-on-surface-variant">Women's Luxury</button>
+                  <button onClick={() => setCurrentView('pdp')} className={currentView === 'pdp' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Festive Lawn &amp; Silk</button>
+                  <button onClick={() => setCurrentView('collection')} className="text-secondary font-bold">Sale</button>
+                </nav>
+
+                <div className="flex items-center gap-4">
+                  <button onClick={() => setIsCartOpen(true)} className="flex items-center gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-[22px]">shopping_bag</span>
+                    <span className="bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">{cartCount}</span>
+                    <span className="hidden md:inline text-xs font-bold text-primary">Rs. {cartTotal.toLocaleString()}</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+          </div>
+
+          {/* Body Content */}
+          <main className="flex-1 pt-[124px]">
+            {/* View 1: Homepage */}
+            {currentView === 'home' && (
+              <div className="space-y-12">
+                <section className="relative min-h-[85vh] bg-surface-container-low flex items-center">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center" 
+                    style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVx5BGIvIB1dIvcoE2Y3iWlzZyTaAW_ph_vvo0MdnKMTfHgu-fQ5aex68kiLdwatU1ILm9unWXUxLK5QSbnFAcRbHfZOSCPr-D7HQYbmepaPKO_AGeTw_Zr4Gcqr-3_Gn0kCUpQSztk-cBogQdyHi1ZisYkqNZt6rQLor-0mP3GWlJz4YDqXAvyOXqzZkJtt6N5obvCsQHsDeGcYsWbtnkVTtqtqriqpA1fqQCnVtxrtkgGQWeTSEC')` }}
+                  >
+                    <div className="absolute inset-0 bg-black/60"></div>
+                  </div>
+
+                  <div className="relative z-10 max-w-[1440px] mx-auto px-6 py-20 text-white space-y-6">
+                    <span className="bg-[#C5A880] text-[#181716] px-3 py-1 text-xs uppercase font-bold tracking-widest rounded">
+                      Heirloom Weaves of Punjab • 2026 Edition
+                    </span>
+                    <h1 className="font-display-lg text-4xl sm:text-6xl max-w-2xl leading-tight">
+                      Tradition,<br/><span className="italic text-[#C5A880]">Woven Beautifully</span>
+                    </h1>
+                    <p className="font-body-lg text-gray-200 max-w-xl">
+                      Archival unstitched textiles crafted with Egyptian combed cotton, pure Chinese mulberry silk, and hand-loomed khaddar.
+                    </p>
+                    <div className="flex flex-wrap gap-4 pt-4">
+                      <button onClick={() => setCurrentView('collection')} className="px-8 py-4 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-gray-200">
+                        Explore Men's Unstitched
+                      </button>
+                      <button onClick={() => setCurrentView('pdp')} className="px-8 py-4 bg-[#C5A880] text-black font-bold uppercase text-xs tracking-widest hover:bg-yellow-600">
+                        Discover Royal Boski PDP
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="max-w-[1440px] mx-auto px-6 py-12">
+                  <h2 className="font-display-md text-3xl mb-6 text-center">Featured Masterpieces</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {[
+                      { title: 'Koh-i-Noor Royal Boski 10-Pound Suit', price: 14850, img: pdpGallery[0] },
+                      { title: 'Sultan Egyptian Giza Latha - Snowy White', price: 8250, img: pdpGallery[1] },
+                      { title: 'Gul-e-Rana Embroidered Lawn 3-Piece', price: 18500, img: pdpGallery[2] },
+                      { title: 'Shahjahan Hand-Spun Karandi Khaddar', price: 9400, img: pdpGallery[3] }
+                    ].map((p, idx) => (
+                      <div key={idx} className="bg-white border rounded overflow-hidden flex flex-col group">
+                        <img src={p.img} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform" />
+                        <div className="p-4 flex flex-col justify-between flex-1 space-y-2">
+                          <h4 onClick={() => setCurrentView('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
+                          <div className="flex justify-between items-center pt-2 border-t">
+                            <span className="font-bold">Rs. {p.price.toLocaleString()}</span>
+                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold">Add to Bag</button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+            )}
+
+            {/* View 2: Collection Listing */}
+            {currentView === 'collection' && (
+              <div className="max-w-[1440px] mx-auto px-6 py-8 space-y-8">
+                <div>
+                  <span className="text-xs uppercase text-secondary font-bold">Catalog Archive</span>
+                  <h1 className="font-display-md text-3xl font-normal">Men's Unstitched Heritage Collection</h1>
+                  <p className="text-gray-600 text-sm mt-1">42 Archival weaves tailored to traditional 4.5-meter suit cuts.</p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  <aside className="lg:col-span-3 space-y-4 bg-gray-50 p-4 rounded border">
+                    <h3 className="font-bold uppercase text-xs">Fabric Weaves</h3>
+                    <div className="space-y-2 text-xs">
+                      <p className="font-bold text-secondary">All Masterpieces (42)</p>
+                      <p>Pure Chinese Boski Silk (12)</p>
+                      <p>Combed Giza Egyptian Latha (14)</p>
+                      <p>Hand-Spun Karandi Khaddar (8)</p>
+                    </div>
+                  </aside>
+
+                  <main className="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                      { title: 'Koh-i-Noor Royal Boski 10-Pound Suit', price: 14850, img: pdpGallery[0] },
+                      { title: 'Sultan Egyptian Giza Latha', price: 8250, img: pdpGallery[1] },
+                      { title: 'Gul-e-Rana Embroidered Lawn', price: 18500, img: pdpGallery[2] },
+                      { title: 'Shahjahan Hand-Spun Karandi', price: 9400, img: pdpGallery[3] },
+                      { title: 'Imperial Wash & Wear Suit', price: 6850, img: pdpGallery[4] }
+                    ].map((p, idx) => (
+                      <div key={idx} className="bg-white border rounded overflow-hidden flex flex-col group">
+                        <img src={p.img} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform" />
+                        <div className="p-4 space-y-2">
+                          <h4 onClick={() => setCurrentView('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
+                          <div className="flex justify-between items-center pt-2 border-t">
+                            <span className="font-bold text-sm">Rs. {p.price.toLocaleString()}</span>
+                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold">Add</button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </main>
+                </div>
+              </div>
+            )}
+
+            {/* View 3: PDP */}
+            {currentView === 'pdp' && (
+              <div className="max-w-[1440px] mx-auto px-6 py-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                  <div className="lg:col-span-7 space-y-4">
+                    <img src={pdpGallery[activeImageIndex]} className="w-full aspect-[4/5] object-cover rounded border" />
+                    <div className="flex gap-2">
+                      {pdpGallery.map((img, idx) => (
+                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`w-20 aspect-[4/5] rounded border ${activeImageIndex === idx ? 'border-2 border-black' : 'opacity-60'}`}>
+                          <img src={img} className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-5 space-y-6">
+                    <span className="text-xs uppercase text-secondary font-bold">Royal Boski Series • Lot #TB-2026</span>
+                    <h1 className="font-display-md text-3xl">Koh-i-Noor Royal Boski 10-Pound Unstitched Suit</h1>
+                    <div className="text-2xl font-bold text-primary">Rs. 14,850 <span className="text-sm line-through text-gray-400">Rs. 16,500</span></div>
+                    
+                    <div className="space-y-2">
+                      <label className="font-bold text-xs uppercase block">Select Length</label>
+                      <div className="flex gap-2">
+                        <button onClick={() => setSelectedLength('4.5m')} className={`flex-1 py-3 text-xs font-bold border rounded ${selectedLength === '4.5m' ? 'bg-black text-white' : 'bg-white'}`}>4.5m Standard Cut</button>
+                        <button onClick={() => setSelectedLength('7.0m')} className={`flex-1 py-3 text-xs font-bold border rounded ${selectedLength === '7.0m' ? 'bg-black text-white' : 'bg-white'}`}>7.0m Double Cut</button>
+                      </div>
+                    </div>
+
+                    <button onClick={() => addToCart({ id: 'boski', title: 'Koh-i-Noor Royal Boski 10-Pound Suit', price: 14850, image: pdpGallery[0] })} className="w-full py-4 bg-black text-white font-bold uppercase text-xs tracking-widest hover:bg-secondary">
+                      Add To Atelier Bag
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* View 4: Design System */}
+            {currentView === 'design-system' && (
+              <div className="max-w-[1440px] mx-auto px-6 py-12 space-y-8">
+                <div className="bg-black text-white p-8 rounded">
+                  <span className="text-xs text-[#C5A880] uppercase font-bold">Stitch MCP Design Asset: asset-stub-assets_8233403c8fc44472beb41240de5fb393</span>
+                  <h1 className="font-display-lg text-4xl mt-2">Tanabana Editorial Luxury Couture System</h1>
+                  <p className="text-gray-400 text-sm mt-1">Design tokens, color swatches, and typography hierarchy for project #5671272351440654145.</p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="p-4 bg-[#181716] text-white rounded font-bold text-xs">Primary: #181716</div>
+                  <div className="p-4 bg-[#C5A880] text-black rounded font-bold text-xs">Secondary: #C5A880</div>
+                  <div className="p-4 bg-[#424D43] text-white rounded font-bold text-xs">Tertiary: #424D43</div>
+                  <div className="p-4 bg-[#FDFBF7] text-black border rounded font-bold text-xs">Canvas: #FDFBF7</div>
+                </div>
+              </div>
+            )}
+          </main>
+
+          {/* Footer */}
+          <footer className="bg-black text-white py-12 mt-16 border-t border-gray-800">
+            <div className="max-w-[1440px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+              <p>© 2026 Tanabana Fabrics. Recreated as requested from Stitch Project ID 5671272351440654145.</p>
+              <div className="flex gap-4">
+                <button onClick={() => setCurrentView('home')}>Home</button>
+                <button onClick={() => setCurrentView('collection')}>Collection</button>
+                <button onClick={() => setCurrentView('pdp')}>PDP</button>
+                <button onClick={() => setCurrentView('design-system')}>Design System</button>
+              </div>
+            </div>
+          </footer>
+
+          {/* Toast */}
+          {toast && (
+            <div className="fixed bottom-6 right-6 bg-black text-white px-6 py-3 rounded shadow-2xl text-xs font-bold uppercase tracking-wider">
+              {toast}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
