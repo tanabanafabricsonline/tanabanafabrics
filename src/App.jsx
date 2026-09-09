@@ -4,11 +4,10 @@ import Footer from './components/Footer';
 import Homepage from './components/Homepage';
 import CollectionListing from './components/CollectionListing';
 import PDP from './components/PDP';
-import DesignSystemViewer from './components/DesignSystemViewer';
 import CartDrawer from './components/CartDrawer';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'collection' | 'pdp' | 'design-system'
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'collection' | 'pdp'
   const [currency, setCurrency] = useState('PKR');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -102,10 +101,6 @@ export default function App() {
             setCurrentView={setCurrentView} 
             addToCart={addToCart} 
           />
-        )}
-
-        {currentView === 'design-system' && (
-          <DesignSystemViewer />
         )}
       </main>
 

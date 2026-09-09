@@ -127,17 +127,6 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
             </button>
 
             <button
-              onClick={() => handleNavClick('design-system')}
-              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${
-                currentView === 'design-system'
-                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5'
-                  : 'text-on-surface-variant hover:text-on-surface'
-              }`}
-            >
-              Design System
-            </button>
-
-            <button
               onClick={() => handleNavClick('collection')}
               className="font-label-caps text-label-caps uppercase text-secondary hover:text-primary transition-colors tracking-widest font-semibold cursor-pointer"
             >
@@ -226,12 +215,6 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
                 className="py-2.5 px-3 rounded text-left text-on-surface hover:bg-surface-container transition-colors"
               >
                 Heritage Shawls
-              </button>
-              <button
-                onClick={() => handleNavClick('design-system')}
-                className={`py-2.5 px-3 rounded text-left transition-colors ${currentView === 'design-system' ? 'bg-primary text-on-primary font-bold' : 'text-on-surface hover:bg-surface-container'}`}
-              >
-                Design System Inspector
               </button>
               <button
                 onClick={() => handleNavClick('collection')}
