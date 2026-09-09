@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tanabana Fabrics • Luxury Pakistani Unstitched Textiles (Stitch Project #5671272351440654145)</title>
+  <title>Tanabana Fabrics • Luxury Pakistani Unstitched Textiles</title>
   
   <!-- Fonts & Material Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +77,6 @@
 
   <!-- React & Babel CDNs -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
@@ -114,9 +113,9 @@
       const [currentView, setCurrentView] = useState('home'); // 'home' | 'collection' | 'pdp' | 'design-system'
       const [currency, setCurrency] = useState('PKR');
       const [isCartOpen, setIsCartOpen] = useState(false);
+      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
       const [activeImageIndex, setActiveImageIndex] = useState(0);
       const [selectedLength, setSelectedLength] = useState('4.5m');
-      const [includeHornButtons, setIncludeHornButtons] = useState(true);
       const [toast, setToast] = useState(null);
 
       const [cartItems, setCartItems] = useState([
@@ -130,6 +129,12 @@
           options: '4.5m Cut + Horn Buttons'
         }
       ]);
+
+      const handleNavClick = (view) => {
+        setCurrentView(view);
+        setIsMobileMenuOpen(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
 
       const triggerToast = (msg) => {
         setToast(msg);
@@ -155,48 +160,15 @@
 
       return (
         <div className="min-h-screen flex flex-col">
-          {/* Top Stitch Control Header */}
+          {/* Header Bar */}
           <div className="fixed top-0 left-0 w-full z-50">
-            <div className="bg-[#181716] text-[#C5A880] text-xs py-1.5 px-4 flex items-center justify-between border-b border-[#333]">
-              <div className="flex items-center gap-2 font-label-caps uppercase tracking-wider text-[11px]">
-                <span className="bg-[#C5A880] text-[#181716] font-bold px-2 py-0.5 rounded text-[10px]">Stitch Screens</span>
-                <span className="hidden md:inline text-gray-400">Project ID: 5671272351440654145</span>
-              </div>
-              <div className="flex items-center gap-1 sm:gap-2 font-label-caps text-[11px] uppercase tracking-wider">
-                <button 
-                  onClick={() => setCurrentView('home')} 
-                  className={`px-2.5 py-1 rounded ${currentView === 'home' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
-                >
-                  1. Homepage
-                </button>
-                <button 
-                  onClick={() => setCurrentView('collection')} 
-                  className={`px-2.5 py-1 rounded ${currentView === 'collection' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
-                >
-                  2. Collection Listing
-                </button>
-                <button 
-                  onClick={() => setCurrentView('pdp')} 
-                  className={`px-2.5 py-1 rounded ${currentView === 'pdp' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
-                >
-                  3. Royal Boski PDP
-                </button>
-                <button 
-                  onClick={() => setCurrentView('design-system')} 
-                  className={`px-2.5 py-1 rounded ${currentView === 'design-system' ? 'bg-[#C5A880] text-[#181716] font-bold' : 'text-gray-300 hover:text-white'}`}
-                >
-                  4. Design System
-                </button>
-              </div>
-            </div>
-
             {/* Announcement bar */}
             <div className="h-9 bg-primary text-on-primary flex items-center justify-between px-4 max-w-[1440px] mx-auto text-xs uppercase tracking-widest font-label-caps">
               <div className="hidden md:flex items-center gap-4">
                 <span>+92 42 111-TANABANA</span>
                 <span>Gulberg • Clifton</span>
               </div>
-              <div className="flex-1 text-center">
+              <div className="flex-1 text-center truncate px-2">
                 Complimentary Express Delivery on Orders &gt; Rs. 3,500
               </div>
               <div className="flex items-center gap-2">
@@ -206,38 +178,66 @@
               </div>
             </div>
 
-            {/* Main Header */}
+            {/* Main Luxury Header */}
             <header className="bg-surface/95 backdrop-blur-md shadow-sm border-b border-surface-container">
               <div className="h-20 max-w-[1440px] mx-auto px-4 flex items-center justify-between">
-                <button onClick={() => setCurrentView('home')}>
-                  <Logo className="h-9 w-auto" />
-                </button>
+                <div className="flex items-center gap-4">
+                  <button 
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="xl:hidden p-1 text-on-surface hover:text-primary cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-[26px]">
+                      {isMobileMenuOpen ? 'close' : 'menu'}
+                    </span>
+                  </button>
+
+                  <button onClick={() => handleNavClick('home')}>
+                    <Logo className="h-8 sm:h-9 w-auto" />
+                  </button>
+                </div>
 
                 <nav className="hidden xl:flex items-center gap-6 font-label-caps text-xs uppercase tracking-widest">
-                  <button onClick={() => setCurrentView('home')} className={currentView === 'home' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Home</button>
-                  <button onClick={() => setCurrentView('collection')} className={currentView === 'collection' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Men's Unstitched</button>
-                  <button onClick={() => setCurrentView('collection')} className="text-on-surface-variant">Women's Luxury</button>
-                  <button onClick={() => setCurrentView('pdp')} className={currentView === 'pdp' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Festive Lawn &amp; Silk</button>
-                  <button onClick={() => setCurrentView('collection')} className="text-secondary font-bold">Sale</button>
+                  <button onClick={() => handleNavClick('home')} className={currentView === 'home' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Home</button>
+                  <button onClick={() => handleNavClick('collection')} className={currentView === 'collection' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Men's Unstitched</button>
+                  <button onClick={() => handleNavClick('collection')} className="text-on-surface-variant">Women's Luxury</button>
+                  <button onClick={() => handleNavClick('pdp')} className={currentView === 'pdp' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Festive Lawn &amp; Silk</button>
+                  <button onClick={() => handleNavClick('design-system')} className={currentView === 'design-system' ? 'font-bold text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}>Design System</button>
+                  <button onClick={() => handleNavClick('collection')} className="text-secondary font-bold">Sale</button>
                 </nav>
 
                 <div className="flex items-center gap-4">
-                  <button onClick={() => setIsCartOpen(true)} className="flex items-center gap-2 text-on-surface-variant">
+                  <button onClick={() => setIsCartOpen(true)} className="flex items-center gap-2 text-on-surface-variant cursor-pointer">
                     <span className="material-symbols-outlined text-[22px]">shopping_bag</span>
                     <span className="bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">{cartCount}</span>
-                    <span className="hidden md:inline text-xs font-bold text-primary">Rs. {cartTotal.toLocaleString()}</span>
+                    <span className="hidden lg:inline text-xs font-bold text-primary">
+                      {currency === 'PKR' ? `Rs. ${cartTotal.toLocaleString()}` : `$ ${(cartTotal / 278).toFixed(0)}`}
+                    </span>
                   </button>
                 </div>
               </div>
             </header>
+
+            {/* Mobile Drawer Menu */}
+            {isMobileMenuOpen && (
+              <div className="xl:hidden bg-surface-container-lowest border-b border-surface-container shadow-2xl">
+                <div className="max-w-[1440px] mx-auto p-4 space-y-3 font-label-caps text-xs uppercase tracking-widest">
+                  <button onClick={() => handleNavClick('home')} className="block w-full text-left py-2 px-3 rounded hover:bg-gray-100 font-bold">Home</button>
+                  <button onClick={() => handleNavClick('collection')} className="block w-full text-left py-2 px-3 rounded hover:bg-gray-100">Men's Unstitched</button>
+                  <button onClick={() => handleNavClick('collection')} className="block w-full text-left py-2 px-3 rounded hover:bg-gray-100">Women's Luxury</button>
+                  <button onClick={() => handleNavClick('pdp')} className="block w-full text-left py-2 px-3 rounded hover:bg-gray-100">Koh-i-Noor Royal Boski (PDP)</button>
+                  <button onClick={() => handleNavClick('design-system')} className="block w-full text-left py-2 px-3 rounded hover:bg-gray-100">Design System</button>
+                  <button onClick={() => handleNavClick('collection')} className="block w-full text-left py-2 px-3 rounded text-secondary font-bold hover:bg-gray-100">Sale</button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Body Content */}
-          <main className="flex-1 pt-[124px]">
+          <main className="flex-1 pt-[116px]">
             {/* View 1: Homepage */}
             {currentView === 'home' && (
               <div className="space-y-12">
-                <section className="relative min-h-[85vh] bg-surface-container-low flex items-center">
+                <section className="relative min-h-[80vh] sm:min-h-[88vh] bg-surface-container-low flex items-center">
                   <div 
                     className="absolute inset-0 bg-cover bg-center" 
                     style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVx5BGIvIB1dIvcoE2Y3iWlzZyTaAW_ph_vvo0MdnKMTfHgu-fQ5aex68kiLdwatU1ILm9unWXUxLK5QSbnFAcRbHfZOSCPr-D7HQYbmepaPKO_AGeTw_Zr4Gcqr-3_Gn0kCUpQSztk-cBogQdyHi1ZisYkqNZt6rQLor-0mP3GWlJz4YDqXAvyOXqzZkJtt6N5obvCsQHsDeGcYsWbtnkVTtqtqriqpA1fqQCnVtxrtkgGQWeTSEC')` }}
@@ -256,10 +256,10 @@
                       Archival unstitched textiles crafted with Egyptian combed cotton, pure Chinese mulberry silk, and hand-loomed khaddar.
                     </p>
                     <div className="flex flex-wrap gap-4 pt-4">
-                      <button onClick={() => setCurrentView('collection')} className="px-8 py-4 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-gray-200">
+                      <button onClick={() => handleNavClick('collection')} className="px-8 py-4 bg-white text-black font-bold uppercase text-xs tracking-widest hover:bg-gray-200 cursor-pointer">
                         Explore Men's Unstitched
                       </button>
-                      <button onClick={() => setCurrentView('pdp')} className="px-8 py-4 bg-[#C5A880] text-black font-bold uppercase text-xs tracking-widest hover:bg-yellow-600">
+                      <button onClick={() => handleNavClick('pdp')} className="px-8 py-4 bg-[#C5A880] text-black font-bold uppercase text-xs tracking-widest hover:bg-yellow-600 cursor-pointer">
                         Discover Royal Boski PDP
                       </button>
                     </div>
@@ -278,10 +278,10 @@
                       <div key={idx} className="bg-white border rounded overflow-hidden flex flex-col group">
                         <img src={p.img} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform" />
                         <div className="p-4 flex flex-col justify-between flex-1 space-y-2">
-                          <h4 onClick={() => setCurrentView('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
+                          <h4 onClick={() => handleNavClick('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
                           <div className="flex justify-between items-center pt-2 border-t">
                             <span className="font-bold">Rs. {p.price.toLocaleString()}</span>
-                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold">Add to Bag</button>
+                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold cursor-pointer">Add to Bag</button>
                           </div>
                         </div>
                       </div>
@@ -322,10 +322,10 @@
                       <div key={idx} className="bg-white border rounded overflow-hidden flex flex-col group">
                         <img src={p.img} className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform" />
                         <div className="p-4 space-y-2">
-                          <h4 onClick={() => setCurrentView('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
+                          <h4 onClick={() => handleNavClick('pdp')} className="font-bold cursor-pointer hover:text-secondary">{p.title}</h4>
                           <div className="flex justify-between items-center pt-2 border-t">
                             <span className="font-bold text-sm">Rs. {p.price.toLocaleString()}</span>
-                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold">Add</button>
+                            <button onClick={() => addToCart(p)} className="px-3 py-1 bg-black text-white text-xs uppercase font-bold cursor-pointer">Add</button>
                           </div>
                         </div>
                       </div>
@@ -341,9 +341,9 @@
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                   <div className="lg:col-span-7 space-y-4">
                     <img src={pdpGallery[activeImageIndex]} className="w-full aspect-[4/5] object-cover rounded border" />
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 overflow-x-auto">
                       {pdpGallery.map((img, idx) => (
-                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`w-20 aspect-[4/5] rounded border ${activeImageIndex === idx ? 'border-2 border-black' : 'opacity-60'}`}>
+                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`w-20 aspect-[4/5] rounded border flex-shrink-0 ${activeImageIndex === idx ? 'border-2 border-black' : 'opacity-60'}`}>
                           <img src={img} className="w-full h-full object-cover" />
                         </button>
                       ))}
@@ -363,7 +363,7 @@
                       </div>
                     </div>
 
-                    <button onClick={() => addToCart({ id: 'boski', title: 'Koh-i-Noor Royal Boski 10-Pound Suit', price: 14850, image: pdpGallery[0] })} className="w-full py-4 bg-black text-white font-bold uppercase text-xs tracking-widest hover:bg-secondary">
+                    <button onClick={() => addToCart({ id: 'boski', title: 'Koh-i-Noor Royal Boski 10-Pound Suit', price: 14850, image: pdpGallery[0] })} className="w-full py-4 bg-black text-white font-bold uppercase text-xs tracking-widest hover:bg-secondary cursor-pointer">
                       Add To Atelier Bag
                     </button>
                   </div>
@@ -375,9 +375,9 @@
             {currentView === 'design-system' && (
               <div className="max-w-[1440px] mx-auto px-6 py-12 space-y-8">
                 <div className="bg-black text-white p-8 rounded">
-                  <span className="text-xs text-[#C5A880] uppercase font-bold">Stitch MCP Design Asset: asset-stub-assets_8233403c8fc44472beb41240de5fb393</span>
+                  <span className="text-xs text-[#C5A880] uppercase font-bold">Stitch MCP Design System</span>
                   <h1 className="font-display-lg text-4xl mt-2">Tanabana Editorial Luxury Couture System</h1>
-                  <p className="text-gray-400 text-sm mt-1">Design tokens, color swatches, and typography hierarchy for project #5671272351440654145.</p>
+                  <p className="text-gray-400 text-sm mt-1">Design tokens, color swatches, and typography hierarchy for Tanabana Fabrics.</p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -393,12 +393,12 @@
           {/* Footer */}
           <footer className="bg-black text-white py-12 mt-16 border-t border-gray-800">
             <div className="max-w-[1440px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-              <p>© 2026 Tanabana Fabrics. Recreated as requested from Stitch Project ID 5671272351440654145.</p>
+              <p>© 2026 Tanabana Fabrics. Luxury Pakistani Unstitched Textiles.</p>
               <div className="flex gap-4">
-                <button onClick={() => setCurrentView('home')}>Home</button>
-                <button onClick={() => setCurrentView('collection')}>Collection</button>
-                <button onClick={() => setCurrentView('pdp')}>PDP</button>
-                <button onClick={() => setCurrentView('design-system')}>Design System</button>
+                <button onClick={() => handleNavClick('home')}>Home</button>
+                <button onClick={() => handleNavClick('collection')}>Collection</button>
+                <button onClick={() => handleNavClick('pdp')}>PDP</button>
+                <button onClick={() => handleNavClick('design-system')}>Design System</button>
               </div>
             </div>
           </footer>

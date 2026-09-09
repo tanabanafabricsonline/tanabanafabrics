@@ -82,7 +82,7 @@ export default function App() {
       />
 
       {/* Main View Router */}
-      <main className="flex-1 pt-[124px]">
+      <main className="flex-1 pt-[116px]">
         {currentView === 'home' && (
           <Homepage 
             setCurrentView={setCurrentView} 
