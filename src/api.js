@@ -1,9 +1,21 @@
 // API Configuration for Tanabana Fabrics Node.js Backend Server
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const getApiBaseUrl = () => {
+  if (typeof process !== 'undefined' && process.env) {
+    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  }
+  try {
+    if (typeof import.meta !== 'undefined' && import.meta.env) {
+      return import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    }
+  } catch (e) {}
+  return 'http://localhost:5000/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 // Helper function for API requests
 async function fetchAPI(endpoint, options = {}) {
-  const token = localStorage.getItem('tanabana_token');
+  const token = typeof window !== 'undefined' ? localStorage.getItem('tanabana_token') : null;
   const headers = {
     'Content-Type': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -36,7 +48,7 @@ export const api = {
       const email = (credentials.email || '').toLowerCase().trim();
       if (email === 'admin@tanabana.com' && credentials.password === 'admin123456') {
         const mockToken = 'mock_admin_jwt_token_tanabana_2026';
-        localStorage.setItem('tanabana_token', mockToken);
+        if (typeof window !== 'undefined') localStorage.setItem('tanabana_token', mockToken);
         return {
           success: true,
           token: mockToken,
@@ -50,7 +62,7 @@ export const api = {
       }
       if (email === 'customer@tanabana.com' && credentials.password === 'customer123456') {
         const mockToken = 'mock_customer_jwt_token_tanabana_2026';
-        localStorage.setItem('tanabana_token', mockToken);
+        if (typeof window !== 'undefined') localStorage.setItem('tanabana_token', mockToken);
         return {
           success: true,
           token: mockToken,
@@ -66,7 +78,7 @@ export const api = {
     }
   },
   getProfile: async () => {
-    const token = localStorage.getItem('tanabana_token');
+    const token = typeof window !== 'undefined' ? localStorage.getItem('tanabana_token') : null;
     if (token === 'mock_admin_jwt_token_tanabana_2026') {
       return {
         data: {
