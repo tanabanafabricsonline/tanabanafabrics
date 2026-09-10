@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
 
-export default function Navbar({ currentView, setCurrentView, cartCount, cartTotal, toggleCart, setIsSearchOpen }) {
+export default function Navbar({
+  currentView,
+  setCurrentView,
+  cartCount,
+  cartTotal,
+  toggleCart,
+  setIsSearchOpen,
+  currentUser,
+  onOpenAuthModal,
+  onLogout,
+  announcementText = 'Free Nationwide Delivery on Orders > Rs. 3,500 | Cash on Delivery (COD) Available'
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (view) => {
@@ -15,32 +26,48 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
       {/* Main Top Announcement Bar */}
       <div className="h-9 bg-[#0F382C] text-white flex items-center justify-between px-gutter-mobile lg:px-gutter-desktop max-w-[1440px] mx-auto text-xs uppercase font-label-caps tracking-widest">
         <div className="hidden md:flex items-center gap-space-md">
-          <a href="https://wa.me/923001234567" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-[#25D366] flex items-center gap-1 transition-colors">
-            <span className="material-symbols-outlined text-[14px]">call</span> +92 300 1234567
+          <a href="https://wa.me/923254588421" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-[#25D366] flex items-center gap-1 transition-colors">
+            <span className="material-symbols-outlined text-[14px]">call</span> +92 325 4588421
           </a>
           <span className="text-gray-300 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">pin_drop</span> Lahore • Karachi • Islamabad
           </span>
         </div>
         <div className="flex-1 text-center truncate px-space-xs text-[11px] sm:text-xs">
-          <span className="text-white font-medium">Free Nationwide Delivery on Orders &gt; Rs. 3,500</span>
-          <span className="text-white/40 mx-2 hidden sm:inline">|</span>
-          <span className="text-[#D4AF37] font-semibold hidden sm:inline">Cash on Delivery (COD) Nationwide</span>
+          <span className="text-white font-medium">{announcementText}</span>
         </div>
-        <div className="flex items-center gap-space-md">
-          <span className="text-gray-300 text-[11px]">
-            100% Genuine Weaves
-          </span>
+        <div className="flex items-center gap-3 text-[11px]">
+          {currentUser ? (
+            <div className="flex items-center gap-2">
+              <span className="text-[#D4AF37] font-bold">
+                Hi, {currentUser.name || currentUser.email.split('@')[0]}
+              </span>
+              <button
+                onClick={onLogout}
+                className="text-gray-300 hover:text-white underline cursor-pointer text-[10px]"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={onOpenAuthModal}
+              className="text-[#D4AF37] hover:text-white font-bold cursor-pointer text-[11px] flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-[14px]">person</span>
+              <span>Sign In / Register</span>
+            </button>
+          )}
         </div>
       </div>
 
       {/* Main Luxury Header */}
       <header className="bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-surface-container">
         <div className="h-20 max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
-          
+
           {/* Mobile Menu Trigger & Logo */}
           <div className="flex items-center gap-space-md">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="xl:hidden p-1.5 text-on-surface hover:text-primary transition-colors cursor-pointer"
               aria-label="Toggle Navigation Menu"
@@ -59,22 +86,20 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
           <nav className="hidden xl:flex items-center gap-space-lg">
             <button
               onClick={() => handleNavClick('home')}
-              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${
-                currentView === 'home' 
-                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5' 
+              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${currentView === 'home'
+                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5'
                   : 'text-on-surface-variant hover:text-on-surface'
-              }`}
+                }`}
             >
               Home
             </button>
 
             <button
               onClick={() => handleNavClick('collection')}
-              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${
-                currentView === 'collection' 
-                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5' 
+              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${currentView === 'collection'
+                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5'
                   : 'text-on-surface-variant hover:text-on-surface'
-              }`}
+                }`}
             >
               Men's Unstitched
             </button>
@@ -83,40 +108,30 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
               onClick={() => handleNavClick('collection')}
               className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest cursor-pointer"
             >
-              Women's Luxury
+              Women's Lawn
             </button>
 
             <button
               onClick={() => handleNavClick('pdp')}
-              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${
-                currentView === 'pdp' 
-                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5' 
+              className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer ${currentView === 'pdp'
+                  ? 'text-primary font-bold border-b-2 border-primary pb-0.5'
                   : 'text-on-surface-variant hover:text-on-surface'
-              }`}
+                }`}
             >
-              Festive Lawn &amp; Silk
+              Royal Boski Silk
             </button>
 
-            <button
-              onClick={() => handleNavClick('collection')}
-              className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest cursor-pointer"
-            >
-              Heritage Shawls
-            </button>
-
-            <button
-              onClick={() => handleNavClick('collection')}
-              className="font-label-caps text-label-caps uppercase text-on-surface-variant hover:text-on-surface transition-colors tracking-widest cursor-pointer"
-            >
-              Collections
-            </button>
-
-            <button
-              onClick={() => handleNavClick('collection')}
-              className="font-label-caps text-label-caps uppercase text-secondary hover:text-primary transition-colors tracking-widest font-semibold cursor-pointer"
-            >
-              Sale
-            </button>
+            {currentUser?.role === 'admin' && (
+              <button
+                onClick={() => handleNavClick('admin')}
+                className={`font-label-caps text-label-caps uppercase transition-all tracking-widest cursor-pointer bg-[#0F382C] text-white px-3 py-1 rounded text-xs ${currentView === 'admin'
+                    ? 'font-bold border-b-2 border-[#D4AF37]'
+                    : 'hover:bg-[#1A4B3C]'
+                  }`}
+              >
+                ⚙️ Admin Panel
+              </button>
+            )}
           </nav>
 
           {/* Right Action Icons */}
@@ -128,14 +143,6 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
             >
               <span className="material-symbols-outlined text-[18px]">search</span>
               <span className="hidden sm:inline font-label-caps text-label-caps uppercase text-on-surface-variant">Search</span>
-              <span className="hidden md:inline font-label-caps text-label-caps text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-outline">⌘K</span>
-            </button>
-
-            <button className="relative p-1.5 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">
-              <span className="material-symbols-outlined text-[22px]">favorite</span>
-              <span className="absolute top-0 right-0 h-4 w-4 bg-primary text-on-primary font-label-caps text-[9px] flex items-center justify-center rounded-full">
-                3
-              </span>
             </button>
 
             <button
@@ -156,11 +163,24 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
               </div>
             </button>
 
-            <button className="hidden sm:flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface transition-colors pl-space-2xs cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
-              </div>
-            </button>
+            {currentUser ? (
+              <button
+                onClick={() => currentUser?.role === 'admin' ? handleNavClick('admin') : alert(`User Account: ${currentUser.name} (${currentUser.email})`)}
+                className="hidden sm:flex items-center gap-1.5 bg-[#0F382C] text-white px-3 py-1 rounded-full text-xs font-bold cursor-pointer"
+              >
+                <span>{currentUser.role === 'admin' ? '⚙️ Admin' : '👤 Profile'}</span>
+              </button>
+            ) : (
+              <button
+                onClick={onOpenAuthModal}
+                className="hidden sm:flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface transition-colors pl-space-2xs cursor-pointer"
+                title="Sign In / Register"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#0F382C] flex items-center justify-center text-white">
+                  <span className="material-symbols-outlined text-[18px]">person</span>
+                </div>
+              </button>
+            )}
           </div>
 
         </div>
@@ -208,7 +228,7 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
                 Sale (Up to 30% Off)
               </button>
             </div>
-            
+
             <div className="pt-space-sm border-t border-surface-container flex items-center justify-between text-xs font-label-caps uppercase text-outline">
               <span>Customer Care: +92 42 111-TANABANA</span>
               <span className="text-secondary font-bold">Gulberg • Clifton</span>

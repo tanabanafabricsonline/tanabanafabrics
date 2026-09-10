@@ -11,6 +11,8 @@
     "git-push": "node push.js"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.14.4",
+    "@cloudinary/url-gen": "^1.22.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.2.0",
     "isomorphic-git": "^1.41.9",

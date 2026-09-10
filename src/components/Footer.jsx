@@ -91,12 +91,21 @@ export default function Footer({ setCurrentView }) {
 
         {/* Bottom copyright & payment icons */}
         <div className="pt-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md font-label-caps text-[11px] text-[#8C867E] uppercase tracking-wider">
-          <p>© 2026 Tanabana Fabrics Ltd. All rights reserved. Crafted from Stitch Design System Project #5671272351440654145.</p>
+          <div className="flex items-center gap-3">
+            <p>© 2026 Tanabana Fabrics Ltd. All rights reserved.</p>
+            <span className="text-[#555]">•</span>
+            <button 
+              onClick={() => setCurrentView && setCurrentView('admin-login')} 
+              className="text-[#C5A880] hover:underline text-[10px] uppercase font-bold cursor-pointer"
+            >
+              🔒 Admin Portal
+            </button>
+          </div>
           <div className="flex items-center gap-space-md">
-            <span>Visa</span>
-            <span>Mastercard</span>
-            <span>UnionPay</span>
             <span>Cash on Delivery</span>
+            <span>JazzCash</span>
+            <span>EasyPaisa</span>
+            <span>Bank Transfer</span>
           </div>
         </div>
       </div>
