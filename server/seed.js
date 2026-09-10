@@ -42,7 +42,7 @@ const seedDatabase = async () => {
     const adminUser = await User.create({
       name: 'Tanabana Admin',
       email: 'admin@tanabana.com',
-      phone: '+923001234567',
+      phone: '+923254588421',
       passwordHash: adminPasswordHash,
       role: 'admin',
       isActive: true
