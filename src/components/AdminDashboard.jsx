@@ -7,7 +7,10 @@ export default function AdminDashboard({
   currentIsCodEnabled,
   onSaveStoreSettings,
   onNavigateHome,
-  onLogout
+  onLogout,
+  orders = [],
+  onUpdateOrderStatus,
+  onPlaceOrder
 }) {
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'products' | 'orders' | 'settings' | 'customers'
 
@@ -88,54 +91,37 @@ export default function AdminDashboard({
     inStock: true
   });
 
-  // Orders State
-  const [orders, setOrders] = useState([
-    {
-      id: 'TB-1092',
-      customerName: 'Tariq Mehmood',
-      phone: '+92 300 4567890',
-      city: 'Lahore (Gulberg III)',
-      items: 'Koh-i-Noor Royal Boski (4.5m)',
-      total: 14850,
-      paymentMethod: 'Cash on Delivery (COD)',
-      date: '2026-09-10 18:24',
-      status: 'Pending'
-    },
-    {
-      id: 'TB-1091',
-      customerName: 'Chaudhry Bilal',
-      phone: '+92 321 8765432',
-      city: 'Islamabad (F-7/2)',
-      items: 'Egyptian Giza Latha Supreme',
-      total: 11200,
-      paymentMethod: 'Cash on Delivery (COD)',
-      date: '2026-09-10 16:10',
-      status: 'Dispatched'
-    },
-    {
-      id: 'TB-1090',
-      customerName: 'Dr. Usman Khalid',
-      phone: '+92 333 1122334',
-      city: 'Karachi (DHA Phase 6)',
-      items: 'Imperial Pure Silk Karandi',
-      total: 18500,
-      paymentMethod: 'Prepaid Bank Transfer',
-      date: '2026-09-09 21:45',
-      status: 'Delivered'
-    },
-    {
-      id: 'TB-1089',
-      customerName: 'Shahid Afridi',
-      phone: '+92 301 9988776',
-      city: 'Peshawar (Cantonment)',
-      items: 'Heritage Textured Karandi',
-      total: 8900,
-      paymentMethod: 'Cash on Delivery (COD)',
-      date: '2026-09-09 14:15',
-      status: 'Delivered'
-    }
-  ]);
   const [orderStatusFilter, setOrderStatusFilter] = useState('ALL');
+
+  const handleSimulateTestOrder = () => {
+    const randomId = `TB-${Math.floor(1000 + Math.random() * 9000)}`;
+    const cities = ['Lahore (Gulberg)', 'Karachi (DHA)', 'Islamabad (F-8)', 'Rawalpindi (Bahria Town)'];
+    const names = ['Hamza Ali', 'Zayn Malik', 'Kamran Akmal', 'Farhan Saeed'];
+    const suits = ['Koh-i-Noor Royal Boski (4.5m)', 'Egyptian Giza Latha (4.5m)', 'Heritage Textured Karandi (4.5m)'];
+    
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomCity = cities[Math.floor(Math.random() * cities.length)];
+    const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+    const prices = [14850, 11200, 8900, 18500];
+    const randomPrice = prices[Math.floor(Math.random() * prices.length)];
+
+    const testOrder = {
+      id: randomId,
+      customerName: randomName,
+      phone: '+92 300 ' + Math.floor(1000000 + Math.random() * 9000000),
+      city: randomCity,
+      address: `Street ${Math.floor(1 + Math.random()*20)}, ${randomCity}`,
+      items: randomSuit,
+      total: randomPrice,
+      paymentMethod: 'Cash on Delivery (COD)',
+      date: new Date().toISOString().slice(0, 16).replace('T', ' '),
+      status: 'Pending'
+    };
+
+    if (onPlaceOrder) {
+      onPlaceOrder(testOrder);
+    }
+  };
 
   // Customer List State
   const [customers] = useState([
@@ -245,14 +231,11 @@ export default function AdminDashboard({
     }));
   };
 
-  // Update Order Status
+  // Update Order Status via App props
   const handleUpdateOrderStatus = (orderId, newStatus) => {
-    setOrders(prev => prev.map(o => {
-      if (o.id === orderId) {
-        return { ...o, status: newStatus };
-      }
-      return o;
-    }));
+    if (onUpdateOrderStatus) {
+      onUpdateOrderStatus(orderId, newStatus);
+    }
   };
 
   // Filtered Products
@@ -265,11 +248,12 @@ export default function AdminDashboard({
   // Filtered Orders
   const filteredOrders = orders.filter(o => {
     if (orderStatusFilter === 'ALL') return true;
-    return o.status.toUpperCase() === orderStatusFilter.toUpperCase();
+    return (o.status || '').toUpperCase() === orderStatusFilter.toUpperCase();
   });
 
-  // Calculate Metrics
-  const totalRevenue = orders.reduce((sum, o) => sum + (o.status !== 'Cancelled' ? o.total : 0), 0) + 241950;
+  // Calculate Metrics (CRITICAL: Cancelled orders payment is EXCLUDED from Gross Sales Revenue!)
+  const activeOrders = orders.filter(o => o.status !== 'Cancelled');
+  const totalRevenue = activeOrders.reduce((sum, o) => sum + Number(o.total || 0), 0);
   const pendingOrdersCount = orders.filter(o => o.status === 'Pending').length;
 
   return (
@@ -755,15 +739,26 @@ export default function AdminDashboard({
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    {['ALL', 'PENDING', 'DISPATCHED', 'DELIVERED'].map(st => (
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button
+                      onClick={handleSimulateTestOrder}
+                      className="px-3 py-1.5 bg-[#B8860B] hover:bg-[#966C07] text-white rounded text-xs font-bold uppercase cursor-pointer flex items-center gap-1 shadow-sm"
+                      title="Generate a sample test customer order"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+                      <span>+ Simulate Test Order</span>
+                    </button>
+
+                    <div className="h-5 w-px bg-gray-300 mx-1"></div>
+
+                    {['ALL', 'PENDING', 'PROCESSING', 'DISPATCHED', 'COMPLETED', 'CANCELLED'].map(st => (
                       <button
                         key={st}
                         onClick={() => setOrderStatusFilter(st)}
-                        className={`px-3 py-1.5 rounded text-xs font-bold uppercase cursor-pointer ${
+                        className={`px-2.5 py-1.5 rounded text-xs font-bold uppercase cursor-pointer transition-colors ${
                           orderStatusFilter === st
                             ? 'bg-[#0F382C] text-white'
-                            : 'bg-[#FAF8F5] text-gray-700 border border-[#EAE6DF]'
+                            : 'bg-[#FAF8F5] text-gray-700 hover:bg-gray-200 border border-[#EAE6DF]'
                         }`}
                       >
                         {st}
@@ -777,56 +772,68 @@ export default function AdminDashboard({
                     <thead className="bg-[#FAF8F5] text-[#0F382C] font-bold uppercase tracking-wider text-[11px] border-b border-[#EAE6DF]">
                       <tr>
                         <th className="py-3 px-4">Order ID &amp; Date</th>
-                        <th className="py-3 px-4">Customer Details</th>
+                        <th className="py-3 px-4">Customer Details &amp; Address</th>
                         <th className="py-3 px-4">Fabric Suit Items</th>
                         <th className="py-3 px-4">Payment Method</th>
                         <th className="py-3 px-4">Total (PKR)</th>
-                        <th className="py-3 px-4">Update Status</th>
+                        <th className="py-3 px-4">Manage Status</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#F0ECE6]">
-                      {filteredOrders.map(order => (
-                        <tr key={order.id} className="hover:bg-[#FAF8F5] transition-colors">
-                          <td className="py-3 px-4">
-                            <p className="font-mono font-bold text-[#0F382C]">{order.id}</p>
-                            <p className="text-[10px] text-gray-400">{order.date}</p>
-                          </td>
-                          <td className="py-3 px-4">
-                            <p className="font-bold text-gray-800">{order.customerName}</p>
-                            <p className="text-[11px] text-emerald-800 font-semibold">{order.phone}</p>
-                            <p className="text-[10px] text-gray-500">{order.city}</p>
-                          </td>
-                          <td className="py-3 px-4 text-gray-700 font-medium max-w-xs">
-                            {order.items}
-                          </td>
-                          <td className="py-3 px-4">
-                            <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-[10px] font-bold">
-                              {order.paymentMethod}
-                            </span>
-                          </td>
-                          <td className="py-3 px-4 font-bold text-[#0F382C] text-sm">
-                            Rs. {order.total.toLocaleString()}
-                          </td>
-                          <td className="py-3 px-4">
-                            <select
-                              value={order.status}
-                              onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
-                              className={`px-2.5 py-1 rounded text-xs font-bold uppercase border focus:outline-none cursor-pointer ${
-                                order.status === 'Pending' ? 'bg-amber-50 text-amber-800 border-amber-300' :
-                                order.status === 'Dispatched' ? 'bg-blue-50 text-blue-800 border-blue-300' :
-                                order.status === 'Delivered' ? 'bg-emerald-50 text-emerald-800 border-emerald-300' :
-                                'bg-red-50 text-red-800 border-red-300'
-                              }`}
-                            >
-                              <option value="Pending">Pending</option>
-                              <option value="Processing">Processing</option>
-                              <option value="Dispatched">Dispatched</option>
-                              <option value="Delivered">Delivered</option>
-                              <option value="Cancelled">Cancelled</option>
-                            </select>
+                      {filteredOrders.length === 0 ? (
+                        <tr>
+                          <td colSpan={6} className="py-8 text-center text-gray-400">
+                            No orders found under status "{orderStatusFilter}".
                           </td>
                         </tr>
-                      ))}
+                      ) : (
+                        filteredOrders.map(order => (
+                          <tr key={order.id} className={`hover:bg-[#FAF8F5] transition-colors ${order.status === 'Cancelled' ? 'opacity-60 bg-red-50/30' : ''}`}>
+                            <td className="py-3 px-4">
+                              <p className="font-mono font-bold text-[#0F382C]">{order.id}</p>
+                              <p className="text-[10px] text-gray-400">{order.date}</p>
+                            </td>
+                            <td className="py-3 px-4">
+                              <p className="font-bold text-gray-800">{order.customerName}</p>
+                              <p className="text-[11px] text-emerald-800 font-semibold">{order.phone}</p>
+                              <p className="text-[10px] text-gray-500 max-w-xs">{order.address || order.city}</p>
+                            </td>
+                            <td className="py-3 px-4 text-gray-700 font-medium max-w-xs">
+                              {order.items}
+                            </td>
+                            <td className="py-3 px-4">
+                              <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-[10px] font-bold">
+                                {order.paymentMethod}
+                              </span>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-[#0F382C] text-sm">
+                              Rs. {order.total.toLocaleString()}
+                              {order.status === 'Cancelled' && (
+                                <span className="block text-[9px] text-red-600 font-bold">Excluded from Sales</span>
+                              )}
+                            </td>
+                            <td className="py-3 px-4">
+                              <select
+                                value={order.status}
+                                onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
+                                className={`px-2.5 py-1 rounded text-xs font-bold uppercase border focus:outline-none cursor-pointer shadow-xs ${
+                                  order.status === 'Pending' ? 'bg-amber-100 text-amber-900 border-amber-300' :
+                                  order.status === 'Processing' ? 'bg-purple-100 text-purple-900 border-purple-300' :
+                                  order.status === 'Dispatched' ? 'bg-blue-100 text-blue-900 border-blue-300' :
+                                  order.status === 'Completed' || order.status === 'Delivered' ? 'bg-emerald-100 text-emerald-900 border-emerald-300' :
+                                  'bg-red-100 text-red-900 border-red-300'
+                                }`}
+                              >
+                                <option value="Pending">⏳ Pending</option>
+                                <option value="Processing">⚙️ Processing</option>
+                                <option value="Dispatched">🚚 Dispatched / Shipping</option>
+                                <option value="Completed">✅ Completed / Delivered</option>
+                                <option value="Cancelled">❌ Cancelled (Subtract Revenue)</option>
+                              </select>
+                            </td>
+                          </tr>
+                        ))
+                      )}
                     </tbody>
                   </table>
                 </div>
