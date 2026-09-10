@@ -328,19 +328,32 @@ export default function PDP({ setCurrentView, addToCart }) {
 
                 <button 
                   onClick={handleAddToBag}
-                  className="flex-1 py-3.5 bg-primary text-on-primary hover:bg-secondary font-label-caps text-label-caps uppercase tracking-widest transition-colors font-bold shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                  className="flex-1 py-3.5 bg-[#0F382C] text-white hover:bg-[#1A4B3C] font-label-caps text-label-caps uppercase tracking-widest transition-colors font-bold shadow-lg flex items-center justify-center gap-2 cursor-pointer rounded"
                 >
                   <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
-                  <span>Add To Atelier Bag</span>
+                  <span>Add To Bag</span>
                 </button>
               </div>
 
-              <button 
-                onClick={handleAddToBag}
-                className="w-full py-3.5 bg-secondary text-on-secondary hover:bg-on-secondary-container font-label-caps text-label-caps uppercase tracking-widest transition-colors font-bold text-center cursor-pointer shadow-md"
-              >
-                Instant Express Checkout (COD Available)
-              </button>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button 
+                  onClick={handleAddToBag}
+                  className="w-full py-3.5 bg-[#B8860B] text-white hover:bg-[#966C07] font-label-caps text-xs uppercase tracking-widest transition-colors font-bold text-center cursor-pointer shadow-md rounded"
+                >
+                  Cash on Delivery Checkout
+                </button>
+
+                <button
+                  onClick={() => {
+                    const text = encodeURIComponent(`Assalam-o-Alaikum! I want to order "Koh-i-Noor Royal Boski 10-Pound (${selectedLength})" (Rs. ${totalPrice.toLocaleString()}) via Cash on Delivery.`);
+                    window.open(`https://wa.me/923001234567?text=${text}`, '_blank');
+                  }}
+                  className="w-full py-3.5 bg-[#25D366] text-white hover:bg-[#1EBE5B] font-label-caps text-xs uppercase tracking-widest transition-colors font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md rounded"
+                >
+                  <span className="material-symbols-outlined text-[18px]">chat</span>
+                  <span>Order via WhatsApp</span>
+                </button>
+              </div>
             </div>
 
             {/* Information Accordion Tabs */}

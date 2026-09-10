@@ -403,29 +403,42 @@ export default function CollectionListing({ setCurrentView, addToCart }) {
                       </p>
                     </div>
 
-                    <div className="pt-space-sm border-t border-surface-container flex items-center justify-between">
-                      <div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="font-price-md text-price-md text-primary font-bold">
-                            Rs. {product.price.toLocaleString()}
-                          </span>
-                          {product.originalPrice && (
-                            <span className="font-body-sm text-xs text-outline line-through">
-                              Rs. {product.originalPrice.toLocaleString()}
+                    <div className="pt-space-sm border-t border-surface-container flex flex-col gap-2">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="flex items-baseline gap-2">
+                            <span className="font-price-md text-price-md text-[#0F382C] font-bold">
+                              Rs. {product.price.toLocaleString()}
                             </span>
-                          )}
+                            {product.originalPrice && (
+                              <span className="font-body-sm text-xs text-outline line-through">
+                                Rs. {product.originalPrice.toLocaleString()}
+                              </span>
+                            )}
+                          </div>
+                          <span className="font-label-caps text-[9px] text-[#B8860B] uppercase font-semibold">
+                            Cash on Delivery Available
+                          </span>
                         </div>
-                        <span className="font-label-caps text-[9px] text-secondary uppercase font-semibold">
-                          Free Express Shipping
-                        </span>
+
+                        <button 
+                          onClick={() => addToCart(product)}
+                          className="p-2 rounded bg-[#0F382C] text-white hover:bg-[#B8860B] transition-colors cursor-pointer"
+                          title="Add to Bag"
+                        >
+                          <span className="material-symbols-outlined text-[20px]">add_shopping_bag</span>
+                        </button>
                       </div>
 
-                      <button 
-                        onClick={() => addToCart(product)}
-                        className="p-2 rounded bg-surface-container-high hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"
-                        title="Add to Bag"
+                      <button
+                        onClick={() => {
+                          const text = encodeURIComponent(`Assalam-o-Alaikum! I want to order "${product.title}" (Rs. ${product.price.toLocaleString()}) via Cash on Delivery.`);
+                          window.open(`https://wa.me/923001234567?text=${text}`, '_blank');
+                        }}
+                        className="w-full py-1.5 bg-[#25D366] text-white hover:bg-[#1EBE5B] text-[11px] uppercase font-bold tracking-wider rounded flex items-center justify-center gap-1 transition-colors cursor-pointer"
                       >
-                        <span className="material-symbols-outlined text-[20px]">add_shopping_bag</span>
+                        <span className="material-symbols-outlined text-[15px]">chat</span>
+                        <span>Order on WhatsApp</span>
                       </button>
                     </div>
                   </div>

@@ -8,7 +8,6 @@ import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home' | 'collection' | 'pdp'
-  const [currency, setCurrency] = useState('PKR');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
@@ -74,8 +73,6 @@ export default function App() {
         setCurrentView={setCurrentView}
         cartCount={cartCount}
         cartTotal={cartTotal}
-        currency={currency}
-        setCurrency={setCurrency}
         toggleCart={() => setIsCartOpen(!isCartOpen)}
         setIsSearchOpen={setIsSearchOpen}
       />
@@ -115,7 +112,6 @@ export default function App() {
         updateQuantity={updateQuantity}
         removeItem={removeItem}
         cartTotal={cartTotal}
-        currency={currency}
         setCurrentView={setCurrentView}
       />
 
@@ -154,10 +150,22 @@ export default function App() {
         </div>
       )}
 
+      {/* Floating WhatsApp Quick Order Button */}
+      <a
+        href="https://wa.me/923001234567?text=Assalam-o-Alaikum!%20I%20have%20a%20query%20about%20Tanabana%20Fabrics."
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white p-3 sm:px-4 sm:py-3 rounded-full shadow-2xl hover:bg-[#1EBE5B] transition-all flex items-center gap-2 font-label-caps text-xs uppercase font-bold tracking-wider cursor-pointer group"
+        title="Chat on WhatsApp"
+      >
+        <span className="material-symbols-outlined text-[24px]">chat</span>
+        <span className="hidden sm:inline">WhatsApp Order</span>
+      </a>
+
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-primary text-on-primary px-space-lg py-space-md shadow-2xl rounded flex items-center gap-3 animate-fade-in">
-          <span className="material-symbols-outlined text-[#C5A880]">check_circle</span>
+        <div className="fixed bottom-6 right-6 z-50 bg-[#0F382C] text-white px-space-lg py-space-md shadow-2xl rounded flex items-center gap-3 animate-fade-in border border-[#D4AF37]">
+          <span className="material-symbols-outlined text-[#D4AF37]">check_circle</span>
           <span className="font-label-caps text-xs uppercase tracking-wider">{toastMessage}</span>
         </div>
       )}

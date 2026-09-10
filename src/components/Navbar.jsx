@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
 
-export default function Navbar({ currentView, setCurrentView, cartCount, cartTotal, currency, setCurrency, toggleCart, setIsSearchOpen }) {
+export default function Navbar({ currentView, setCurrentView, cartCount, cartTotal, toggleCart, setIsSearchOpen }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (view) => {
@@ -13,39 +13,24 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       {/* Main Top Announcement Bar */}
-      <div className="h-9 bg-primary text-on-primary flex items-center justify-between px-gutter-mobile lg:px-gutter-desktop max-w-[1440px] mx-auto text-xs uppercase font-label-caps tracking-widest">
+      <div className="h-9 bg-[#0F382C] text-white flex items-center justify-between px-gutter-mobile lg:px-gutter-desktop max-w-[1440px] mx-auto text-xs uppercase font-label-caps tracking-widest">
         <div className="hidden md:flex items-center gap-space-md">
-          <span className="text-surface-variant flex items-center gap-space-2xs">
-            <span className="material-symbols-outlined text-[14px]">call</span> +92 42 111-TANABANA
-          </span>
-          <span className="text-surface-variant flex items-center gap-space-2xs">
-            <span className="material-symbols-outlined text-[14px]">pin_drop</span> Gulberg • Clifton
+          <a href="https://wa.me/923001234567" target="_blank" rel="noreferrer" className="text-gray-200 hover:text-[#25D366] flex items-center gap-1 transition-colors">
+            <span className="material-symbols-outlined text-[14px]">call</span> +92 300 1234567
+          </a>
+          <span className="text-gray-300 flex items-center gap-1">
+            <span className="material-symbols-outlined text-[14px]">pin_drop</span> Lahore • Karachi • Islamabad
           </span>
         </div>
         <div className="flex-1 text-center truncate px-space-xs text-[11px] sm:text-xs">
-          <span className="text-on-primary">Complimentary Express Delivery on Orders &gt; Rs. 3,500</span>
-          <span className="text-surface-variant mx-space-xs hidden sm:inline">|</span>
-          <span className="text-surface-variant hidden sm:inline">COD Available Nationwide</span>
+          <span className="text-white font-medium">Free Nationwide Delivery on Orders &gt; Rs. 3,500</span>
+          <span className="text-white/40 mx-2 hidden sm:inline">|</span>
+          <span className="text-[#D4AF37] font-semibold hidden sm:inline">Cash on Delivery (COD) Nationwide</span>
         </div>
         <div className="flex items-center gap-space-md">
-          <a className="hidden lg:inline text-surface-variant hover:text-on-primary transition-colors" href="#">
-            Track Order
-          </a>
-          <div className="flex items-center gap-1 bg-surface-container-highest/20 px-2 py-0.5 rounded-full text-[11px]">
-            <span 
-              onClick={() => setCurrency('PKR')}
-              className={`cursor-pointer transition-colors ${currency === 'PKR' ? 'text-on-primary font-bold' : 'text-surface-variant hover:text-on-primary'}`}
-            >
-              PKR
-            </span>
-            <span className="text-surface-variant">/</span>
-            <span 
-              onClick={() => setCurrency('USD')}
-              className={`cursor-pointer transition-colors ${currency === 'USD' ? 'text-on-primary font-bold' : 'text-surface-variant hover:text-on-primary'}`}
-            >
-              USD
-            </span>
-          </div>
+          <span className="text-gray-300 text-[11px]">
+            100% Genuine Weaves
+          </span>
         </div>
       </div>
 
@@ -165,8 +150,8 @@ export default function Navbar({ currentView, setCurrentView, cartCount, cartTot
               </div>
               <div className="hidden lg:flex flex-col text-left leading-none">
                 <span className="font-label-caps text-[10px] text-outline uppercase">Bag</span>
-                <span className="font-price-md text-price-md text-primary">
-                  {currency === 'PKR' ? `Rs. ${cartTotal.toLocaleString()}` : `$ ${(cartTotal / 278).toFixed(0)}`}
+                <span className="font-price-md text-price-md text-primary font-bold">
+                  Rs. {cartTotal.toLocaleString()}
                 </span>
               </div>
             </button>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CartDrawer({ isOpen, onClose, cartItems, updateQuantity, removeItem, cartTotal, currency, setCurrentView }) {
+export default function CartDrawer({ isOpen, onClose, cartItems, updateQuantity, removeItem, cartTotal, setCurrentView }) {
   if (!isOpen) return null;
 
   const freeShippingThreshold = 3500;
@@ -94,8 +94,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, updateQuantity,
                       </div>
 
                       <div className="text-right">
-                        <span className="font-price-md text-sm font-bold text-primary">
-                          {currency === 'PKR' ? `Rs. ${(item.price * item.quantity).toLocaleString()}` : `$ ${((item.price * item.quantity) / 278).toFixed(0)}`}
+                        <span className="font-price-md text-sm font-bold text-[#0F382C]">
+                          Rs. {(item.price * item.quantity).toLocaleString()}
                         </span>
                       </div>
                     </div>
@@ -118,29 +118,36 @@ export default function CartDrawer({ isOpen, onClose, cartItems, updateQuantity,
             <div className="p-space-lg border-t border-surface-container bg-surface-container-low space-y-space-sm">
               <div className="flex justify-between font-label-caps uppercase text-xs">
                 <span className="text-outline">Subtotal</span>
-                <span className="font-bold text-primary">
-                  {currency === 'PKR' ? `Rs. ${cartTotal.toLocaleString()}` : `$ ${(cartTotal / 278).toFixed(0)}`}
+                <span className="font-bold text-[#0F382C]">
+                  Rs. {cartTotal.toLocaleString()}
                 </span>
               </div>
               <div className="flex justify-between font-label-caps uppercase text-xs">
-                <span className="text-outline">Shipping</span>
-                <span className="text-secondary font-bold">
+                <span className="text-outline">Shipping Nationwide</span>
+                <span className="text-[#B8860B] font-bold">
                   {cartTotal >= freeShippingThreshold ? 'FREE' : 'Rs. 250'}
                 </span>
               </div>
 
-              <div className="pt-2 border-t border-surface-container-high flex justify-between font-price-lg text-lg font-bold text-primary">
-                <span>Total Due</span>
+              <div className="pt-2 border-t border-surface-container-high flex justify-between font-price-lg text-lg font-bold text-[#0F382C]">
+                <span>Total Payable</span>
                 <span>
-                  {currency === 'PKR' ? `Rs. ${(cartTotal + (cartTotal >= freeShippingThreshold ? 0 : 250)).toLocaleString()}` : `$ ${((cartTotal + (cartTotal >= freeShippingThreshold ? 0 : 250)) / 278).toFixed(0)}`}
+                  Rs. {(cartTotal + (cartTotal >= freeShippingThreshold ? 0 : 250)).toLocaleString()}
                 </span>
               </div>
 
+              <div className="pt-1 flex items-center justify-center gap-2 text-[10px] text-gray-500 font-semibold uppercase tracking-wider">
+                <span className="bg-[#0F382C] text-white px-2 py-0.5 rounded">COD</span>
+                <span className="bg-[#931A25] text-white px-2 py-0.5 rounded">JazzCash</span>
+                <span className="bg-[#38A169] text-white px-2 py-0.5 rounded">EasyPaisa</span>
+                <span className="bg-[#2B6CB0] text-white px-2 py-0.5 rounded">Bank Transfer</span>
+              </div>
+
               <button 
-                onClick={() => alert('Order Placed Successfully! Thank you for choosing Tanabana Fabrics.')}
-                className="w-full py-4 bg-primary text-on-primary font-label-caps text-xs uppercase tracking-widest font-bold hover:bg-secondary transition-colors shadow-lg text-center cursor-pointer"
+                onClick={() => alert('Order Placed Successfully via Cash on Delivery! Our team will contact you for order confirmation.')}
+                className="w-full py-3.5 bg-[#0F382C] text-white font-label-caps text-xs uppercase tracking-widest font-bold hover:bg-[#B8860B] transition-colors shadow-lg text-center cursor-pointer rounded"
               >
-                Proceed To Secure Checkout (COD Available)
+                Confirm Cash on Delivery Order
               </button>
             </div>
           )}
