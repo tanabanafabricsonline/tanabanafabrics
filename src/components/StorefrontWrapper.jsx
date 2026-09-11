@@ -69,6 +69,11 @@ export default function StorefrontWrapper({ children }) {
         setCurrentView={changeView}
         onPlaceOrder={store.handlePlaceOrder}
         isCodEnabled={store.isCodEnabled}
+        currentUser={store.currentUser}
+        onOpenAuthModal={() => store.setIsAuthModalOpen(true)}
+        checkoutDraft={store.checkoutDraft}
+        saveCheckoutDraft={store.saveCheckoutDraft}
+        showToast={store.showToast}
       />
 
       {/* Search Modal */}

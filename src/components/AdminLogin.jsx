@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import api from '../api';
 
 export default function AdminLogin({ onAdminLoginSuccess, onCancel }) {
-  const [email, setEmail] = useState('admin@tanabana.com');
-  const [password, setPassword] = useState('admin123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -67,7 +67,7 @@ export default function AdminLogin({ onAdminLoginSuccess, onCancel }) {
               value={email} 
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="admin@tanabana.com" 
+              placeholder="Enter your admin email" 
               className="w-full px-3.5 py-2.5 border border-[#EAE6DF] rounded text-sm focus:outline-none focus:border-[#0F382C]"
             />
           </div>

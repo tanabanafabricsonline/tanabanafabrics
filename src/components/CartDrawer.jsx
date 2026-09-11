@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CartDrawer({
   isOpen,
@@ -11,13 +11,35 @@ export default function CartDrawer({
   cartTotal,
   setCurrentView,
   onPlaceOrder,
-  isCodEnabled
+  isCodEnabled,
+  currentUser,
+  onOpenAuthModal,
+  checkoutDraft,
+  saveCheckoutDraft,
+  showToast
 }) {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerCity, setCustomerCity] = useState('Lahore');
   const [customerAddress, setCustomerAddress] = useState('');
+
+  // Hydrate checkout draft or user profile info
+  useEffect(() => {
+    if (checkoutDraft) {
+      if (checkoutDraft.customerName) setCustomerName(checkoutDraft.customerName);
+      else if (currentUser?.name) setCustomerName(currentUser.name);
+
+      if (checkoutDraft.customerPhone) setCustomerPhone(checkoutDraft.customerPhone);
+      else if (currentUser?.phone) setCustomerPhone(currentUser.phone);
+
+      if (checkoutDraft.customerCity) setCustomerCity(checkoutDraft.customerCity);
+      if (checkoutDraft.customerAddress) setCustomerAddress(checkoutDraft.customerAddress);
+    } else if (currentUser) {
+      if (currentUser.name && !customerName) setCustomerName(currentUser.name);
+      if (currentUser.phone && !customerPhone) setCustomerPhone(currentUser.phone);
+    }
+  }, [checkoutDraft, currentUser]);
 
   if (!isOpen) return null;
 
@@ -26,10 +48,51 @@ export default function CartDrawer({
   const shippingFee = cartTotal >= freeShippingThreshold ? 0 : 250;
   const totalPayable = cartTotal + shippingFee;
 
+  const handleInputChange = (field, value) => {
+    if (field === 'customerName') setCustomerName(value);
+    if (field === 'customerPhone') setCustomerPhone(value);
+    if (field === 'customerCity') setCustomerCity(value);
+    if (field === 'customerAddress') setCustomerAddress(value);
+
+    const updatedDraft = {
+      customerName: field === 'customerName' ? value : customerName,
+      customerPhone: field === 'customerPhone' ? value : customerPhone,
+      customerCity: field === 'customerCity' ? value : customerCity,
+      customerAddress: field === 'customerAddress' ? value : customerAddress,
+    };
+
+    if (saveCheckoutDraft) {
+      saveCheckoutDraft(updatedDraft);
+    }
+  };
+
   const handleCheckoutSubmit = (e) => {
     e.preventDefault();
     if (!customerName || !customerPhone || !customerAddress) {
       alert('Please fill in your name, phone number, and delivery address.');
+      return;
+    }
+
+    const currentDraft = {
+      customerName: customerName.trim(),
+      customerPhone: customerPhone.trim(),
+      customerCity: customerCity.trim(),
+      customerAddress: customerAddress.trim()
+    };
+
+    if (saveCheckoutDraft) {
+      saveCheckoutDraft(currentDraft);
+    }
+
+    // Require user login/registration before completing order placement
+    if (!currentUser) {
+      if (showToast) {
+        showToast('Please Sign In or Register to complete your order. Your details have been preserved!');
+      }
+      if (onOpenAuthModal) {
+        onOpenAuthModal();
+      }
+      onClose(); // Automatically close the sidebar when popup opens
       return;
     }
 
@@ -46,7 +109,8 @@ export default function CartDrawer({
       total: totalPayable,
       paymentMethod: isCodEnabled ? 'Cash on Delivery (COD)' : 'Bank Transfer',
       date: new Date().toISOString().slice(0, 16).replace('T', ' '),
-      status: 'Pending'
+      status: 'Pending',
+      userEmail: currentUser?.email || ''
     };
 
     if (onPlaceOrder) {
@@ -54,9 +118,6 @@ export default function CartDrawer({
     }
 
     setShowCheckoutForm(false);
-    setCustomerName('');
-    setCustomerPhone('');
-    setCustomerAddress('');
     onClose();
   };
 
@@ -90,6 +151,42 @@ export default function CartDrawer({
           {/* Checkout Form View */}
           {showCheckoutForm ? (
             <form onSubmit={handleCheckoutSubmit} className="flex-1 p-space-lg space-y-4 overflow-y-auto bg-white">
+              
+              {/* Account Status Banner */}
+              {currentUser ? (
+                <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 p-3 rounded text-xs flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-emerald-700 text-[20px]">check_circle</span>
+                    <div>
+                      <span className="font-bold block">Logged in as {currentUser.name || currentUser.email}</span>
+                      <span className="text-[10px] text-emerald-700">Account verified • Delivery details auto-saved</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-amber-50 border border-amber-200 text-amber-900 p-3 rounded text-xs space-y-2">
+                  <div className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-amber-700 text-[20px]">lock</span>
+                    <div>
+                      <span className="font-bold block text-amber-950">Login / Registration Required</span>
+                      <span className="text-[11px] text-amber-800">
+                        You can fill out your address below. Your details will be saved when you Sign In or Create an Account to complete order confirmation.
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (onOpenAuthModal) onOpenAuthModal();
+                      onClose();
+                    }}
+                    className="w-full py-2 bg-[#0F382C] text-white font-bold text-[11px] uppercase tracking-wider rounded shadow hover:bg-[#1A4B3C] transition-colors cursor-pointer"
+                  >
+                    Sign In or Create Account Now
+                  </button>
+                </div>
+              )}
+
               <div className="bg-[#FAF8F5] p-3 rounded border border-[#EAE6DF] space-y-1 text-xs">
                 <span className="font-bold text-[#0F382C] uppercase text-[11px] block">Order Summary ({cartItems.length} Suits)</span>
                 <p className="text-gray-600 line-clamp-2">{cartItems.map(i => i.title).join(', ')}</p>
@@ -101,7 +198,7 @@ export default function CartDrawer({
                 <input 
                   type="text" 
                   value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
+                  onChange={(e) => handleInputChange('customerName', e.target.value)}
                   required
                   placeholder="e.g. Muhammad Hassan" 
                   className="w-full px-3 py-2 border border-[#EAE6DF] rounded text-xs focus:outline-none focus:border-[#0F382C]"
@@ -113,7 +210,7 @@ export default function CartDrawer({
                 <input 
                   type="tel" 
                   value={customerPhone}
-                  onChange={(e) => setCustomerPhone(e.target.value)}
+                  onChange={(e) => handleInputChange('customerPhone', e.target.value)}
                   required
                   placeholder="e.g. 0300 1234567" 
                   className="w-full px-3 py-2 border border-[#EAE6DF] rounded text-xs focus:outline-none focus:border-[#0F382C]"
@@ -124,7 +221,7 @@ export default function CartDrawer({
                 <label className="block text-xs font-bold uppercase text-[#0F382C] mb-1">City</label>
                 <select 
                   value={customerCity}
-                  onChange={(e) => setCustomerCity(e.target.value)}
+                  onChange={(e) => handleInputChange('customerCity', e.target.value)}
                   className="w-full px-3 py-2 border border-[#EAE6DF] rounded text-xs font-bold text-[#0F382C]"
                 >
                   <option value="Lahore">Lahore</option>
@@ -144,7 +241,7 @@ export default function CartDrawer({
                 <label className="block text-xs font-bold uppercase text-[#0F382C] mb-1">Complete Delivery Address</label>
                 <textarea 
                   value={customerAddress}
-                  onChange={(e) => setCustomerAddress(e.target.value)}
+                  onChange={(e) => handleInputChange('customerAddress', e.target.value)}
                   required
                   rows={3}
                   placeholder="House #, Street #, Sector / Area..."
@@ -155,9 +252,16 @@ export default function CartDrawer({
               <div className="pt-2 space-y-2">
                 <button 
                   type="submit"
-                  className="w-full py-3.5 bg-[#0F382C] text-white font-label-caps text-xs uppercase tracking-widest font-bold hover:bg-[#B8860B] transition-colors shadow-lg cursor-pointer rounded"
+                  className="w-full py-3.5 bg-[#0F382C] text-white font-label-caps text-xs uppercase tracking-widest font-bold hover:bg-[#B8860B] transition-colors shadow-lg cursor-pointer rounded flex items-center justify-center gap-2"
                 >
-                  Confirm &amp; Place Order (Rs. {totalPayable.toLocaleString()})
+                  <span className="material-symbols-outlined text-[18px]">
+                    {currentUser ? 'check_circle' : 'lock'}
+                  </span>
+                  <span>
+                    {currentUser 
+                      ? `Confirm & Place Order (Rs. ${totalPayable.toLocaleString()})`
+                      : `Sign In & Confirm Order (Rs. ${totalPayable.toLocaleString()})`}
+                  </span>
                 </button>
                 <button 
                   type="button"

@@ -27,6 +27,16 @@ export function StoreProvider({ children }) {
 
   const [toastMessage, setToastMessage] = useState(null);
 
+  const [checkoutDraft, setCheckoutDraft] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('tanabana_checkout_draft');
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) {}
+      }
+    }
+    return { customerName: '', customerPhone: '', customerCity: 'Lahore', customerAddress: '' };
+  });
+
   const [cartItems, setCartItems] = useState([
     {
       id: 'pdp-boski',
@@ -138,9 +148,30 @@ export function StoreProvider({ children }) {
     showToast('Storefront Settings & COD configuration updated live!');
   };
 
+  // Automatically close cart sidebar whenever Auth Modal is opened
+  useEffect(() => {
+    if (isAuthModalOpen) {
+      setIsCartOpen(false);
+    }
+  }, [isAuthModalOpen]);
+
+  const saveCheckoutDraft = (draft) => {
+    setCheckoutDraft(draft);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('tanabana_checkout_draft', JSON.stringify(draft));
+    }
+  };
+
   const handleCustomerLoginSuccess = (user) => {
     setCurrentUser(user);
+    setIsAuthModalOpen(false);
     showToast(`Welcome back, ${user.name || user.email}!`);
+    // Re-open cart drawer after Auth Modal finishes closing
+    setTimeout(() => {
+      if (cartItems.length > 0) {
+        setIsCartOpen(true);
+      }
+    }, 100);
   };
 
   const handleAdminLoginSuccess = (adminUser) => {
@@ -189,6 +220,10 @@ export function StoreProvider({ children }) {
   const handlePlaceOrder = (newOrder) => {
     setOrders(prev => [newOrder, ...prev]);
     setCartItems([]);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('tanabana_checkout_draft');
+    }
+    setCheckoutDraft({ customerName: '', customerPhone: '', customerCity: 'Lahore', customerAddress: '' });
     showToast(`Order #${newOrder.id} placed successfully!`);
   };
 
@@ -209,6 +244,8 @@ export function StoreProvider({ children }) {
     setIsAuthModalOpen,
     currentUser,
     setCurrentUser,
+    checkoutDraft,
+    saveCheckoutDraft,
     announcementText,
     setAnnouncementText,
     isCodEnabled,
